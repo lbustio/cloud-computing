@@ -1,6 +1,6 @@
-# Curso: Computo nube y tecnologias emergentes
+# Computo nube y tecnologias emergentes
 
-Repositorio oficial de trabajo para el curso. Aqui vas a encontrar la estructura por modulos, materiales de referencia y la ruta de trabajo para avanzar semana a semana.
+Repositorio oficial de trabajo para el curso "Computo nube y tecnologias emergentes" de la Maestría en Ciencias en Tecnologías de Seguridad, del Instituto Nacional de Astrofísica, Óptica y Electrónica (INAOE). Aqui vas a encontrar la estructura por modulos, materiales de referencia y la ruta de trabajo para avanzar semana a semana.
 
 ## Profesor del curso
 
@@ -21,18 +21,20 @@ Al finalizar, deberias poder:
 
 ## 2) Estructura del repositorio
 
-- 00.-documentos del curso/
-  - Temario general y bibliografia.
-- 01.-modulo 1/
-  - Fundamentos cloud e infraestructura base.
-- 02.-modulo 2/
-  - Pipelines distribuidos, observabilidad y eventos.
-- 03.-modulo 3/
-  - Telemetria, monitoreo y analisis de seguridad.
-- 04.-modulo 4/
-  - IA/ML aplicada a telemetria y seguridad.
-- 05.-modulo 5/
-  - Blockchain y tecnologias descentralizadas.
+- [00.-documentos del curso](00.-documentos%20del%20curso/)
+  - [00.-temario general.md](00.-documentos%20del%20curso/00.-temario%20general.md)
+  - [MSO6017 Cómputo nube y tecnologías emergentes.docx](00.-documentos%20del%20curso/MSO6017%20C%C3%B3mputo%20nube%20y%20tecnolog%C3%ADas%20emergentes.docx)
+- [01.-modulo 1](01.-modulo%201/)
+  - [00.-temario modulo 1.md](01.-modulo%201/00.-temario%20modulo%201.md)
+  - [01.-introduccion al curso.md](01.-modulo%201/01.-introduccion%20al%20curso.md)
+- [02.-modulo 2](02.-modulo%202/)
+  - [00.-temario modulo 2.md](02.-modulo%202/00.-temario%20modulo%202.md)
+- [03.-modulo 3](03.-modulo%203/)
+  - [03.-temario modulo 3.md](03.-modulo%203/03.-temario%20modulo%203.md)
+- [04.-modulo 4](04.-modulo%204/)
+  - [04.-temario modulo 4.md](04.-modulo%204/04.-temario%20modulo%204.md)
+- [05.-modulo 5](05.-modulo%205/)
+  - [05.-temario modulo 5.md](05.-modulo%205/05.-temario%20modulo%205.md)
 
 ## 3) Ruta de aprendizaje sugerida
 
@@ -153,6 +155,8 @@ El curso usa analisis de seguridad con enfoque defensivo y educativo.
 - Respetar politicas institucionales y legales.
 
 ## 11) Bibliografia base
+
+La bibliografia base del curso esta recogida tambien en el temario general, aqui tienes las referencias principales como material de consulta:
 
 - Antonopoulos, A. M., y Wood, G. (2019). Mastering Ethereum: Building Smart Contracts and DApps. O'Reilly Media.
 - Foster, I., y Gannon, D. B. (2017). Cloud Computing for Science and Engineering. MIT Press.
