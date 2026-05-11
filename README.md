@@ -162,7 +162,7 @@ La bibliografia base del curso esta recogida tambien en el temario general, aqui
 - Foster, I., y Gannon, D. B. (2017). Cloud Computing for Science and Engineering. MIT Press.
 - Hwang, K. (2017). Cloud Computing for Machine Learning and Cognitive Applications. MIT Press.
 - Vacca, J. R. (Ed.). (2016). Cloud Computing Security: Foundations and Challenges. CRC Press.
-- Google Cloud. (s. f.). Google Cloud Fundamentals: Core Infrastructure (en espanol). Coursera. https://www.coursera.org/learn/gcp-fundamentals-es
-- YouTube. (s. f.). Introduccion a Google Cloud Platform. https://www.youtube.com/watch?v=lvZk_sc8u5I
-- YouTube. (s. f.). Google Cloud Platform Tutorial. https://www.youtube.com/watch?v=4dNSAIwXO5M
-- YouTube. (s. f.). Google Cloud Platform for Beginners. https://www.youtube.com/watch?v=HU58N5fz7B8
+- Google Cloud. (s. f.). [Google Cloud Fundamentals: Core Infrastructure (en espanol)](https://www.coursera.org/learn/gcp-fundamentals-es). Coursera.
+- YouTube. (s. f.). [Introduccion a Google Cloud Platform](https://www.youtube.com/watch?v=lvZk_sc8u5I).
+- YouTube. (s. f.). [Google Cloud Platform Tutorial](https://www.youtube.com/watch?v=4dNSAIwXO5M).
+- YouTube. (s. f.). [Google Cloud Platform for Beginners](https://www.youtube.com/watch?v=HU58N5fz7B8).
