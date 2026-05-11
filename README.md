@@ -2,6 +2,23 @@
 
 Repositorio oficial de trabajo para el curso "Computo nube y tecnologias emergentes" de la Maestría en Ciencias en Tecnologías de Seguridad, del Instituto Nacional de Astrofísica, Óptica y Electrónica (INAOE). Aqui vas a encontrar la estructura por modulos, materiales de referencia y la ruta de trabajo para avanzar semana a semana.
 
+## Información general
+
+- Clave: MSO6017
+- Programa: Maestría en Ciencias en Tecnologías de Seguridad
+- Institución: INAOE
+- Modalidad de trabajo: práctica guiada con infraestructura cloud real
+
+## Acceso rápido
+
+- [Temario general](00.-documentos%20del%20curso/00.-temario%20general.md)
+- [Sesión 1](01.-modulo%201/01.-introduccion%20al%20curso.md)
+- [Módulo 1](01.-modulo%201/00.-temario%20modulo%201.md)
+- [Módulo 2](02.-modulo%202/00.-temario%20modulo%202.md)
+- [Módulo 3](03.-modulo%203/03.-temario%20modulo%203.md)
+- [Módulo 4](04.-modulo%204/04.-temario%20modulo%204.md)
+- [Módulo 5](05.-modulo%205/05.-temario%20modulo%205.md)
+
 ## Profesor del curso
 
 - Lazaro Bustio Martinez, PhD
