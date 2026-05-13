@@ -1,0 +1,253 @@
+\documentclass[
+  % -------------------------
+  % Curso
+  % -------------------------
+  coursetitle={Cómputo Nube y Tecnologías Emergentes},
+  coursehours={96},
+  coursedate={Verano 2026},
+  doctype={Guía del curso},
+  otherlangs={english,french},
+  % -------------------------
+  % Autor
+  % -------------------------
+  authorname={Lázaro},
+  authorsurname={Bustio-Martínez},
+  authortitle={PhD},
+  role={Profesor Investigador},
+  email={lbustio@inaoe.mx},
+  phone={5559504000},
+  ext={7459},
+  % -------------------------
+  % Institución
+  % -------------------------
+  institution={Instituto Nacional de Astrofísica, Óptica y Electrónica (INAOE)},
+  department={Maestría en Ciencias en Tecnologías de Seguridad},
+  %unit={Coordinación de Ciberseguridad},
+  address={Luis Enrique Erro 1, Sta. Ma. Tonantzintla, San Andrés Cholula, CP 72840, Puebla, México},
+  % -------------------------
+  % Márgenes
+  % -------------------------
+  margin={0.5in}
+]{lbustio_lecture_notes}
+
+\begin{document}
+
+\IberoCover
+
+\section{Descripción general}
+\label{sec:descripcion}
+
+Este curso introduce los fundamentos del cómputo en la nube y de diversas tecnologías emergentes con aplicaciones en ciberseguridad. Se estudian los modelos de servicio y despliegue de la nube, la gestión distribuida de datos, los principales mecanismos de seguridad en entornos cloud y el uso de plataformas de inteligencia artificial y aprendizaje automático. Asimismo, se analizan los fundamentos de blockchain, los contratos inteligentes, los criptoactivos y algunas de sus aplicaciones más relevantes.
+
+El curso combina bases conceptuales con actividades prácticas orientadas al diseño, implementación y evaluación de soluciones tecnológicas seguras apoyadas en infraestructura cloud.
+
+\section{Objetivos}
+\label{sec:objetivos}
+
+A continuación se presentan los objetivos general y específicos del curso.
+
+\subsection{Objetivo general}
+\label{sec:objetivo_general}
+
+Proporcionar al estudiante los conocimientos teóricos y prácticos necesarios para comprender, analizar y aplicar los fundamentos del cómputo en la nube y de tecnologías emergentes, tales como inteligencia artificial y blockchain, con el fin de diseñar e implementar soluciones seguras para problemas relevantes en el ámbito de la ciberseguridad.
+
+\subsection{Objetivos específicos}
+\label{sec:objetivos_especificos}
+\begin{itemize}
+  \item Comprender los modelos de servicio, despliegue y operación del cómputo en la nube, considerando elasticidad, virtualización, costos, conectividad y riesgos de seguridad.
+  \item Desplegar y administrar infraestructura básica en Google Cloud Platform, incluyendo máquinas virtuales, almacenamiento, acceso remoto, reglas de firewall y servicios web funcionales.
+  \item Construir pipelines de ingestión, búsqueda y visualización de eventos mediante Elasticsearch y Kibana sobre infraestructura cloud real.
+  \item Recolectar, centralizar y analizar telemetría y logs de seguridad para identificar patrones, actividad sospechosa y limitaciones del monitoreo en entornos cloud.
+  \item Aplicar servicios cloud de inteligencia artificial y aprendizaje automático, como BigQuery ML y Vertex AI, para explorar datasets de eventos, detectar anomalías e interpretar resultados.
+  \item Desplegar e interactuar con una blockchain educativa privada para comprender bloques, hashes, transacciones, integridad, consenso simplificado y aplicaciones básicas en ciberseguridad.
+  \item Documentar de forma reproducible las arquitecturas, procedimientos, problemas encontrados, decisiones técnicas, evidencias de funcionamiento y reflexiones críticas de cada práctica.
+\end{itemize}
+
+\section{Estructura del curso}
+\label{sec:estrucrtura}
+El curso está organizado en unidades progresivas que combinan fundamentos conceptuales, análisis de arquitecturas, demostraciones técnicas y prácticas guiadas sobre infraestructura cloud. La parte teórica introduce los principios que explican el funcionamiento de los sistemas distribuidos modernos: virtualización, contenedores, redes definidas por software, almacenamiento administrado, elasticidad, alta disponibilidad, observabilidad, control de acceso, gestión de identidades, cifrado, automatización, servicios de inteligencia artificial y mecanismos básicos de blockchain. La parte práctica busca que el estudiante despliegue, configure, documente y evalúe soluciones reales, identificando tanto sus capacidades como sus riesgos de seguridad.
+
+Las unidades del curso se articulan alrededor de cuatro ejes. El primero aborda los fundamentos del cómputo en la nube, incluyendo modelos de servicio, modelos de despliegue, regiones, zonas, escalabilidad, costos y responsabilidades compartidas de seguridad. El segundo se centra en infraestructura y servicios administrados: máquinas virtuales, almacenamiento, redes, reglas de firewall, acceso remoto, despliegue de aplicaciones y automatización de configuraciones. El tercero introduce monitoreo, búsqueda y análisis de eventos mediante pipelines de telemetría, logs, Elasticsearch, Kibana y datasets de seguridad. El cuarto integra tecnologías emergentes, particularmente inteligencia artificial aplicada al análisis de datos y blockchain como mecanismo para estudiar integridad, trazabilidad y consenso.
+
+\section{Políticas del curso}
+\label{sec:politicas}
+
+A continuación se presentan las políticas generales del curso. Estas políticas son fundamentales para el buen desarrollo del curso y para garantizar un ambiente de aprendizaje efectivo y respetuoso para todos los participantes.
+
+\begin{itemize}
+  \item Los estudiantes deben revisar regularmente el correo institucional y el espacio del curso en en la plataforma educativa utilizada. Toda comunicación oficial entre estudiantes y el profesor se realizará a través de estos medios.
+  \item Google Classroom es la plataforma única para la gestión del curso en esta edición. En esta plataforma se compartirán avisos urgentes, se controlará la asistencia y se registrarán las evaluaciones. Los estudiantes deben revisar y cargar las actividades, tareas y exámenes asignados en ella. Es responsabilidad de cada estudiante mantenerse informado sobre fechas y actividades. Las actividades entregadas por otros medios o fuera del tiempo estipulado no serán aceptadas ni evaluadas.
+  \item La asistencia se registrará en cada sesión. Para tener derecho a presentar los exámenes, los estudiantes deben cumplir con la asistencia mínima establecida en el reglamento escolar.
+  \item No se permitirán extensiones en las fechas de entrega de actividades. Cada actividad tendrá un plazo de entrega razonable y bien definido partir de su fecha de asignación que el profesor comunicará en cada asignación. La plataforma educativa estará configurada con las fechas de entrega correspondientes. En caso de cualquier contradicción, prevalecerá la indicación que indique el profesor en la clase.
+  \item Las actividades evaluativas indicadas en clase son suficientes para obtener una evaluación adecuada si se realizan en tiempo y forma. No habrá oportunidades adicionales para mejorar evaluaciones después de su entrega. La evaluación final se basará únicamente en las actividades entregadas en los plazos establecidos.
+  \item Todas las entregas de actividades deben ser en formato PDF. No se recibirán ni evaluarán actividades entregadas en otros formatos. Si se requiere enviar más de un archivo, estos deben ser entregados en formato PDF y comprimidos en un archivo .ZIP.
+  \item Aunque las actividades puedan realizarse en equipo, cada miembro debe enviar su propia copia del trabajo, independientemente de que otro compañero haya enviado la suya. Cada estudiante debe subir el trabajo individualmente en la plataforma del curso. No se aceptará de ninguna forma la justificación “no lo entregué porque mi compañero ya lo entregó”.
+  \item Las clases serán en línea serán y en tiempo real, lo que significa que los estudiantes deben participar en el momento programado para la clase. La asistencia en estas sesiones en línea será obligatoria. Es obligatoria la participación con cámaras encendidas y micrófonos apagados, salvo que se indique lo contrario. Los estudiantes que deseen participar activamente deberán hacerlo mediante las opciones disponibles en la plataforma que se utilice.
+  \item Si alguna clase debe ser cancelada, el profesor notificará con suficiente antelación. Las clases y actividades canceladas serán reprogramadas para la semana siguiente. La reposición se considerará válida solo si al menos el 85\% de los estudiantes asisten a la clase reprogramada.
+  \item Se permitirá una tolerancia de hasta 10 minutos para el ingreso a las clases. Luego de este tiempo no se permitirá la entrada al salón.
+  \item El tiempo de descanso durante las clases será acordado con los estudiantes al inicio de cada sesión. El descanso podrá realizarse durante la clase o al final, según lo pactado.
+  \item Los estudiantes deben cumplir estrictamente con los reglamentos establecidos, en particular en lo que respecta a comportamiento, respeto y otras cuestiones académicas.
+  \item Queda terminantemente prohibido ingresar a las clases con alimentos o bebidas y comer durante las sesiones. Esta política debe ser respetada en todas las clases presenciales.
+
+\end{itemize}
+
+\subsection{Comunicación}
+\label{sec:comuinicacion}
+Toda la comunicación se hará por los canales oficiales (correo electrónico, plataforma del curso, etc.). La dirección de correo del profesor es: lbustio@inaoe.mx. Las asesorías podrán ser pactadas por los estudiantes y el profesor en un espacio de tiempo de mutua conveniencia.
+
+
+\subsection{Entregas}
+Las entregas se presentarán en PDF. Se penalizarán retrasos. Si se requiere evidencia fotográfica
+de productos horneados, las imágenes deben ser claras, con iluminación suficiente y fondo neutro,
+para permitir evaluación visual consistente.
+
+\subsection{Integridad}
+Se prohíbe presentar como propio material ajeno (recetas completas, reportes, fotos). La integridad
+académica implica documentar fuentes y describir procesos reales, no resultados inventados.
+
+\newpage
+
+\section{Metodología}
+La metodología del curso sigue un enfoque experimental: se parte de una receta base y se modifica
+una variable por vez. Por ejemplo, se puede variar hidratación manteniendo constante el tiempo de
+fermentación, o variar temperatura manteniendo constante la formulación. El objetivo es aislar efectos
+y aprender relaciones causa-efecto.
+
+Se fomentará el uso de bitácora técnica. La bitácora debe incluir: fecha, lote, masa total, porcentaje de
+hidratación, tipo de harina, temperatura ambiente, temperatura de masa, tiempos de autólisis, mezclado,
+fermentación en bloque, formado, prueba final y horneado. También debe incluir observaciones cualitativas
+(tacto, elasticidad, extensibilidad) y cuantitativas (peso antes/después, pérdida de humedad, volumen).
+
+\section{Evaluación}
+La evaluación se compone de prácticas, reportes y un proyecto final.
+
+\begin{center}
+\begin{tabular}{l r}
+\hline
+Componente & Porcentaje \\
+\hline
+Prácticas de laboratorio & 40\% \\
+Reportes técnicos & 30\% \\
+Proyecto final & 30\% \\
+\hline
+\end{tabular}
+\end{center}
+
+\subsection{Criterios de prácticas}
+Las prácticas se evaluarán con una rúbrica que incluye:
+\begin{itemize}
+  \item Reproducibilidad del proceso (bitácora completa y coherente).
+  \item Control de fermentación (evidencia de tiempos y temperaturas).
+  \item Calidad del formado (tensión superficial adecuada, sellos correctos).
+  \item Calidad del horneado (expansión, corteza, coloración).
+  \item Análisis crítico (identificación de fallos y correcciones plausibles).
+\end{itemize}
+
+\section{Proyecto final}
+El proyecto final consiste en diseñar una variación de la receta base para producir un pan con una meta
+explícita (por ejemplo: miga más abierta, corteza más delgada, mayor acidez, o mayor suavidad). El estudiante
+debe justificar técnicamente los cambios y documentar evidencia del resultado. Se espera un reporte con:
+formulación, parámetros, fotos, análisis y conclusiones.
+
+\newpage
+
+\section{Calendario tentativo}
+El calendario es tentativo y puede ajustarse por necesidades operativas. Las unidades se imparten en el
+orden siguiente:
+
+\begin{itemize}
+  \item Unidad 1: Ingredientes, porcentajes panaderos y medición.
+  \item Unidad 2: Mezclado, autólisis y desarrollo de gluten.
+  \item Unidad 3: Fermentación: tiempo, temperatura y maduración.
+  \item Unidad 4: Formado, tensión y estructura.
+  \item Unidad 5: Horneado: vapor, expansión, corteza y color.
+  \item Unidad 6: Diagnóstico de fallos y control de calidad.
+\end{itemize}
+
+\section{Bibliografía sugerida}
+\begin{itemize}
+  \item Hamelman, J. \textit{Bread: A Baker's Book of Techniques and Recipes}.
+  \item Forkish, K. \textit{Flour Water Salt Yeast}.
+  \item Calvel, R. \textit{The Taste of Bread}.
+  \item Suas, M. \textit{Advanced Bread and Pastry}.
+\end{itemize}
+
+\section{Cierre}
+Este texto largo es únicamente para validar que el encabezado y el pie de página se mantienen consistentes
+a lo largo de tres páginas. Si la salida muestra tres páginas con el mismo estilo, entonces la clase está
+correctamente configurada.
+
+% =====================================================================
+% ================= EJEMPLOS DE FUNCIONALIDADES DEL TEMPLATE ===========
+% =====================================================================
+
+\newpage
+\section{Ejemplos del template}
+
+\subsection{Idiomas y escritura segura}
+Texto en español con acentos explícitos: caf\'e, acci\'on, informaci\'on, ni\~no, Espa\~na.
+
+\begin{otherlanguage}{english}
+This paragraph is written in English.
+\end{otherlanguage}
+
+\begin{otherlanguage}{french}
+Ce paragraphe est en fran\c{c}ais.
+\end{otherlanguage}
+
+Texto mixto con \foreignlanguage{english}{inline English} dentro de una frase.
+
+\subsection{Pseudocódigo}
+
+\begin{algorithm}
+\caption{Proceso de fermentación controlada}
+\begin{algorithmic}[1]
+\Require Masa inicial $M$
+\Ensure Masa fermentada
+\State Ajustar temperatura
+\For{$t = 1$ to $T$}
+  \State Reposar($M$) \Comment{fermentación}
+\EndFor
+\State \Return $M$
+\end{algorithmic}
+\end{algorithm}
+
+\subsection{Código fuente}
+
+\begin{pythoncode}
+def hidratar(harina, agua):
+    return harina * agua
+\end{pythoncode}
+
+\begin{CodeBox}{Python}
+def hidratar(harina, agua):
+    return harina * agua
+\end{CodeBox}
+
+\begin{cppcode}
+#include <stdio.h>
+int main() {
+  printf("Pan listo\n");
+  return 0;
+}
+\end{cppcode}
+
+\begin{CodeBox}{C++}
+#include <stdio.h>
+int main() {
+  printf("Pan listo\n");
+  return 0;
+}
+\end{CodeBox}
+
+\subsection{Notas y observaciones}
+
+\Nota{Usa siempre \'{a}, \~n, etc. Por ejemplo: \textit{panificaci\'on}, \textit{ni\~nez}.}
+
+\Observaciones{Texto mezclado sin drama: This line is English. Ceci est fran\c{c}ais. Espa\~nol tambi\'en.}
+
+\Advertencia{Si cambias dos variables a la vez, tu conclusi\'on queda contaminada. Una variable por corrida.}
+
+\Tip{Para fotos de evidencia: luz frontal, fondo neutro, y referencia de escala (regla o moneda).}
+
+\end{document}

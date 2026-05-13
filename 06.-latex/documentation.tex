@@ -1,0 +1,185 @@
+% documentation.tex
+% Compilar con: pdflatex -output-directory=out documentation.tex
+
+\documentclass[
+  % -------------------------
+  % Curso
+  % -------------------------
+  coursetitle={Manual de uso de \texttt{lbustio\_lecture\_notes}},
+  coursehours={96},
+  coursedate={Verano 2026},
+  doctype={Documentaci\'on de la clase},
+  otherlangs={english,french},
+  % -------------------------
+  % Autor
+  % -------------------------
+  authorname={L\'azaro},
+  authorsurname={Bustio-Mart\'inez},
+  authortitle={PhD},
+  role={Profesor Investigador},
+  email={lbustio@inaoe.mx},
+  phone={5559504000},
+  ext={7459},
+  % -------------------------
+  % Instituci\'on
+  % -------------------------
+  institution={Instituto Nacional de Astrof\'isica, \'Optica y Electr\'onica (INAOE)},
+  department={Maestr\'ia en Ciencias en Tecnolog\'ias de Seguridad},
+  unit={Coordinaci\'on de Ciberseguridad},
+  address={Luis Enrique Erro 1, Sta. Ma. Tonantzintla, San Andr\'es Cholula, CP 72840, Puebla, M\'exico},
+  % -------------------------
+  % M\'argenes
+  % -------------------------
+  margin={0.5in}
+]{lbustio_lecture_notes}
+
+\usepackage{lipsum}
+
+\begin{document}
+
+\IberoCourseInfo
+
+\section{Prop\'osito}
+Este documento describe la estructura actual de la clase \texttt{lbustio\_lecture\_notes}. La clase separa los datos del documento de su presentaci\'on visual: primero se declaran datos de autor, instituci\'on y curso; despu\'es la clase usa esos datos para construir el encabezado, la informaci\'on del curso y el pie de p\'agina.
+
+\section{Modelo de datos}
+La clase define tres grupos de datos. Estos grupos no son secciones visuales; son solamente la fuente de informaci\'on.
+
+Si un campo queda vac\'io, la clase no lo imprime en el header, el footer ni Course Info. Esto tambi\'en evita separadores sueltos: no aparecen comas, guiones, puntos ni l\'ineas vac\'ias para datos que no fueron declarados.
+
+\subsection{Autor}
+El autor representa a la persona responsable del documento. Se declara con:
+
+\begin{verbatim}
+authorname={L\'azaro},
+authorsurname={Bustio-Mart\'inez},
+authortitle={PhD},
+role={Profesor Investigador},
+email={lbustio@inaoe.mx},
+phone={5559504000},
+ext={7459},
+\end{verbatim}
+
+\subsection{Instituci\'on}
+La instituci\'on representa la adscripci\'on del autor. Se declara con:
+
+\begin{verbatim}
+institution={Instituto Nacional de Astrof\'isica, \'Optica y Electr\'onica (INAOE)},
+department={Maestr\'ia en Ciencias en Tecnolog\'ias de Seguridad},
+unit={Coordinaci\'on de Ciberseguridad},
+address={Luis Enrique Erro 1, Sta. Ma. Tonantzintla, San Andr\'es Cholula,
+CP 72840, Puebla, M\'exico},
+\end{verbatim}
+
+\subsection{Curso}
+El curso contiene los datos propios del material acad\'emico:
+
+\begin{verbatim}
+coursetitle={C\'omputo Nube y Tecnolog\'ias Emergentes},
+coursehours={96},
+coursedate={Verano 2026},
+doctype={Gu\'ia del curso},
+\end{verbatim}
+
+\section{Secciones visuales}
+A partir de los tres grupos de datos, la clase genera tres secciones visuales.
+
+\subsection{Header}
+El encabezado aparece en todas las p\'aginas. Usa el mismo estilo que el footer: texto peque\~no, gris oscuro, alineado a la derecha y separado del cuerpo por una l\'inea gris. Contiene:
+
+\begin{itemize}
+  \item Nombre y apellidos del autor, con su t\'itulo.
+  \item Rol del autor.
+  \item Email, tel\'efono y extensi\'on.
+\end{itemize}
+
+\subsection{Course Info}
+La secci\'on de informaci\'on del curso se inserta con:
+
+\begin{verbatim}
+\IberoCourseInfo
+\end{verbatim}
+
+Por compatibilidad, \verb|\IberoCover| apunta al mismo macro. Esta secci\'on contiene:
+
+\begin{itemize}
+  \item T\'itulo del curso entre dos l\'ineas azules.
+  \item Instituci\'on, departamento y unidad.
+  \item Autor y t\'itulo del autor.
+  \item Email del autor.
+  \item Fecha del curso.
+  \item Cantidad de horas.
+  \item Tipo de documento.
+\end{itemize}
+
+\subsection{Footer}
+El pie de p\'agina aparece en todas las p\'aginas. Usa el mismo tama\~no, color y l\'inea separadora que el header. Contiene:
+
+\begin{itemize}
+  \item Instituci\'on, departamento y unidad, alineados a la derecha.
+  \item Direcci\'on de la instituci\'on, alineada a la derecha.
+  \item N\'umero de p\'agina centrado.
+\end{itemize}
+
+\section{Ejemplo m\'inimo}
+El siguiente ejemplo muestra la estructura recomendada:
+
+\begin{verbatim}
+\documentclass[
+  coursetitle={C\'omputo Nube y Tecnolog\'ias Emergentes},
+  coursehours={96},
+  coursedate={Verano 2026},
+  doctype={Gu\'ia del curso},
+
+  authorname={L\'azaro},
+  authorsurname={Bustio-Mart\'inez},
+  authortitle={PhD},
+  role={Profesor Investigador},
+  email={lbustio@inaoe.mx},
+  phone={5559504000},
+  ext={7459},
+
+  institution={Instituto Nacional de Astrof\'isica, \'Optica y Electr\'onica (INAOE)},
+  department={Maestr\'ia en Ciencias en Tecnolog\'ias de Seguridad},
+  unit={Coordinaci\'on de Ciberseguridad},
+  address={Luis Enrique Erro 1, Sta. Ma. Tonantzintla, San Andr\'es Cholula,
+  CP 72840, Puebla, M\'exico},
+
+  margin={0.5in}
+]{lbustio_lecture_notes}
+
+\begin{document}
+\IberoCourseInfo
+
+\section{Contenido}
+...
+\end{document}
+\end{verbatim}
+
+\section{Notas de compatibilidad}
+La clase ya no usa una entidad de datos separada llamada \texttt{Instructor}. Tampoco hay herencia entre instructor y autor. La informaci\'on de Course Info sale directamente de los datos del autor, la instituci\'on y el curso.
+
+Si un documento viejo usa llaves como \texttt{instructor}, \texttt{instructortitle} o \texttt{instructoremail}, debe migrarse al modelo nuevo. Tambi\'en se recomienda usar \texttt{institution} en lugar de \texttt{university}; \texttt{university} queda solamente como respaldo interno cuando \texttt{institution} no se declara.
+
+\section{Diagn\'ostico r\'apido}
+Si aparece \texttt{Runaway argument?} cerca de \verb|\documentclass|, casi siempre falta cerrar una llave o un corchete en las opciones de la clase.
+
+\begin{itemize}
+  \item Verifica que cada \verb|key={...}| cierre con \verb|}|.
+  \item Verifica que la lista completa cierre con \verb|]|.
+  \item Evita dejar una coma final justo antes de \verb|]{lbustio_lecture_notes}|.
+\end{itemize}
+
+\section{Contenido de prueba}
+Este contenido solo sirve para verificar que el header y el footer se repiten correctamente en varias p\'aginas.
+
+\subsection{Secci\'on 1}
+\lipsum[1-4]
+
+\subsection{Secci\'on 2}
+\lipsum[5-8]
+
+\subsection{Secci\'on 3}
+\lipsum[9-12]
+
+\end{document}
