@@ -30,6 +30,11 @@
   margin={0.5in}
 ]{lbustio_lecture_notes}
 
+\usepackage{longtable}
+\usepackage{array}
+\usepackage{url}
+\usepackage{enumitem}
+
 \begin{document}
 
 \IberoCover
@@ -96,10 +101,118 @@ A continuación se presentan las políticas generales del curso. Estas política
 Toda la comunicación se hará por los canales oficiales (correo electrónico, plataforma del curso, etc.). La dirección de correo del profesor es: lbustio@inaoe.mx. Las asesorías podrán ser pactadas por los estudiantes y el profesor en un espacio de tiempo de mutua conveniencia.
 
 
-\subsection{Entregas}
-Las entregas se presentarán en PDF. Se penalizarán retrasos. Si se requiere evidencia fotográfica
-de productos horneados, las imágenes deben ser claras, con iluminación suficiente y fondo neutro,
-para permitir evaluación visual consistente.
+\subsection{Cronograma}
+\label{sec:cronograma}
+
+A continuación se presenta el cronograma tentativo del curso. Este cronograma es una guía general y puede estar sujeto a cambios según las necesidades del curso.
+
+\setlength{\LTleft}{0pt}
+\setlength{\LTright}{0pt}
+\begin{longtable}{|
+  >{\centering\arraybackslash}p{0.04\textwidth}|
+  >{\centering\arraybackslash}p{0.07\textwidth}|
+  >{\raggedright\arraybackslash}p{0.39\textwidth}|
+  >{\raggedright\arraybackslash}p{0.39\textwidth}|}
+\caption{Calendario del curso}
+\label{tab:calendario-curso}
+\\
+\hline
+\textbf{No} & \textbf{Fecha} & \textbf{Tema} & \textbf{Comentario} \\
+\hline
+\endfirsthead
+
+\hline
+\textbf{No} & \textbf{Fecha} & \textbf{Tema} & \textbf{Comentario} \\
+\hline
+\endhead
+
+\hline
+\endfoot
+
+1 & 11/05 &
+\textbf{Introducción}
+\begin{itemize}
+\item Presentación del curso.
+\item Explicación de los temas.
+\item Presentación de la plataforma a emplear en el curso.
+\end{itemize}
+&
+\textbf{Práctica}
+\begin{itemize}
+\item Crear una cuenta de usuario en Google Cloud Platform.
+\item Revisar los videos introductorios [1], [2] y [3].
+\end{itemize}
+\\
+\hline
+
+2 & 15/05 &
+\textbf{ICloud Computing con GCP}
+\begin{itemize}
+\item Enfoque practico, trabajo incremental, documentacion y reglas.
+\item GCP como plataforma del curso.
+\item Cloud computing, modelo cloud, IaaS, PaaS y SaaS.
+\item Proyectos, Compute Engine y VM Debian.
+\item Regiones, zonas, VPC, firewall e IP publica/privada.
+\item SSH a instancias Linux.
+\item Costos, billing y buenas practicas de ahorro.
+\item Riesgos y troubleshooting de VM, SSH, firewall y web.
+\item Almacenamiento cloud como actividad posterior.
+\end{itemize}
+&
+\textbf{Práctica}
+\begin{itemize}
+\item Revisar el material de estudio de la sesion.
+\item Crear cuenta/proyecto en GCP.
+\item Desplegar una VM Debian 12 con configuracion minima definida.
+\item Documentar region, zona, costo y buenas practicas de ahorro.
+\item Conectarse por SSH e inspeccionar SO, CPU, memoria y disco.
+\item Instalar herramientas complementarias: \texttt{htop} y \texttt{mc}.
+\item Configurar reglas de firewall HTTP.
+\item Instalar Nginx.
+\item Verificar Nginx desde la VM y desde navegador externo.
+\item Entregar reporte con evidencias, diagrama, costos, riesgos, troubleshooting y reflexion.
+\end{itemize}
+\\
+\hline
+3  & 18/05 & & \\
+\hline
+4  & 22/05 & & \\
+\hline
+5  & 25/05 & & \\
+\hline
+6  & 29/05 & & \\
+\hline
+7  & 01/06 & & \\
+\hline
+8  & 05/06 & & \\
+\hline
+9  & 08/06 & & \\
+\hline
+10 & 12/06 & & \\
+\hline
+11 & 15/06 & & \\
+\hline
+12 & 19/06 & & \\
+\hline
+13 & 22/06 & & \\
+\hline
+14 & 26/06 & & \\
+\hline
+15 & 29/06 & & \\
+\hline
+16 & 03/07 & & \\
+\hline
+
+\end{longtable}
+
+\noindent\textbf{Recursos}
+
+\begin{itemize}
+  \item[{[1]}] \url{https://www.youtube.com/watch?v=lvZk_sc8u5I}
+  \item[{[2]}] \url{https://www.youtube.com/watch?v=4dNSAIwXO5M}
+  \item[{[3]}] \url{https://www.youtube.com/watch?v=HU58N5fz7B8}
+\end{itemize}
+
 
 \subsection{Integridad}
 Se prohíbe presentar como propio material ajeno (recetas completas, reportes, fotos). La integridad
@@ -251,3 +364,4 @@ int main() {
 \Tip{Para fotos de evidencia: luz frontal, fondo neutro, y referencia de escala (regla o moneda).}
 
 \end{document}
+
