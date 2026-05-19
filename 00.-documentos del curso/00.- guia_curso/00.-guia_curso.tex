@@ -177,11 +177,72 @@ A continuación se presenta el cronograma tentativo del curso. Este cronograma e
 \end{itemize}
 \\
 \hline
-3  & 18/05 & & \\
+3  & 18/05 &
+\textbf{Pipelines de observabilidad con ELK Stack}
+\begin{itemize}
+\item Introduccion a pipelines modernos de datos: ingestion, indexacion, busqueda y visualizacion.
+\item Elasticsearch: indices, documentos, mappings, consultas y API REST.
+\item Kibana: dashboards, filtros, visualizaciones y exploracion de eventos.
+\item JSON, \texttt{curl} y scripts de ingestion.
+\item Logs, metricas, eventos, telemetria, monitoreo y relacion con ciberseguridad.
+\item Casos de uso: busqueda de eventos, deteccion de actividad sospechosa y analisis temporal.
+\end{itemize}
+&
+\textbf{Trabajo en clase}
+\begin{itemize}
+\item Revisar el material de la carpeta \texttt{02.- ELK Stack}.
+\item Analizar la arquitectura general de un pipeline ELK.
+\item Identificar componentes, puertos, flujo de datos y requisitos de la VM.
+\item Revisar ejemplos de documentos JSON y consultas REST.
+\item Preparar dudas tecnicas para la instalacion de la sesion 4.
+\item Sin tarea entregable en esta sesion.
+\end{itemize}
+\\
 \hline
-4  & 22/05 & & \\
+4  & 22/05 &
+\textbf{Instalacion de ELK Stack}
+\begin{itemize}
+\item Preparacion de la VM Linux en GCP.
+\item Requisitos de sistema, memoria, servicios y paquetes.
+\item Instalacion de Elasticsearch.
+\item Instalacion de Kibana.
+\item Configuracion de puertos, firewall y acceso remoto.
+\item Verificacion inicial de servicios.
+\item Troubleshooting de instalacion.
+\end{itemize}
+&
+\textbf{Practica guiada}
+\begin{itemize}
+\item Preparar o reutilizar una VM Linux en GCP.
+\item Instalar Elasticsearch.
+\item Instalar Kibana.
+\item Validar estado de los servicios.
+\item Documentar comandos, configuraciones y errores encontrados.
+\item Dejar la VM preparada para la implementacion de la sesion 5.
+\end{itemize}
+\\
 \hline
-5  & 25/05 & & \\
+5  & 25/05 &
+\textbf{Implementacion de ELK Stack}
+\begin{itemize}
+\item Puesta en marcha del pipeline de eventos.
+\item Ingestion de eventos o logs en formato JSON.
+\item Indexacion y validacion de documentos en Elasticsearch.
+\item Consultas basicas mediante API REST.
+\item Visualizacion de datos en Kibana.
+\item Construccion de dashboards iniciales.
+\item Analisis de eventos y patrones observados.
+\end{itemize}
+&
+\textbf{Practica}
+\begin{itemize}
+\item Indexar un dataset de eventos o logs en formato JSON.
+\item Realizar consultas basicas mediante API REST.
+\item Construir visualizaciones y un dashboard inicial en Kibana.
+\item Analizar eventos relevantes del dataset.
+\item Entregar reporte con arquitectura, dataset, consultas, dashboard, problemas encontrados, soluciones y evidencias.
+\end{itemize}
+\\
 \hline
 6  & 29/05 & & \\
 \hline
@@ -218,24 +279,15 @@ A continuación se presenta el cronograma tentativo del curso. Este cronograma e
 
 
 \subsection{Integridad}
-Se prohíbe presentar como propio material ajeno (recetas completas, reportes, fotos). La integridad
-académica implica documentar fuentes y describir procesos reales, no resultados inventados.
-
-\newpage
+Se prohíbe presentar como propio material ajeno, reportes generados sin verificación o evidencias que no correspondan a prácticas realizadas por el estudiante. La integridad académica implica documentar fuentes, describir procesos reales, reconocer errores técnicos y reportar resultados verificables.
 
 \section{Metodología}
-La metodología del curso sigue un enfoque experimental: se parte de una receta base y se modifica
-una variable por vez. Por ejemplo, se puede variar hidratación manteniendo constante el tiempo de
-fermentación, o variar temperatura manteniendo constante la formulación. El objetivo es aislar efectos
-y aprender relaciones causa-efecto.
+La metodología del curso combina explicación conceptual, demostración técnica, práctica guiada, trabajo autónomo y discusión crítica. Cada actividad busca que el estudiante implemente infraestructura o servicios reales, documente decisiones técnicas, identifique riesgos y analice problemas encontrados durante la configuración.
 
-Se fomentará el uso de bitácora técnica. La bitácora debe incluir: fecha, lote, masa total, porcentaje de
-hidratación, tipo de harina, temperatura ambiente, temperatura de masa, tiempos de autólisis, mezclado,
-fermentación en bloque, formado, prueba final y horneado. También debe incluir observaciones cualitativas
-(tacto, elasticidad, extensibilidad) y cuantitativas (peso antes/después, pérdida de humedad, volumen).
+Se fomentará el uso de una bitácora técnica. La bitácora debe incluir fecha, objetivo de la práctica, servicios utilizados, comandos relevantes, configuraciones aplicadas, evidencias, problemas encontrados, soluciones intentadas, costos observados y reflexión final.
 
 \section{Evaluación}
-La evaluación se compone de prácticas, reportes y un proyecto final.
+La evaluación se compone de prácticas, reportes técnicos, discusión de resultados y proyecto final.
 
 \begin{center}
 \begin{tabular}{l r}
@@ -252,119 +304,19 @@ Proyecto final & 30\% \\
 \subsection{Criterios de prácticas}
 Las prácticas se evaluarán con una rúbrica que incluye:
 \begin{itemize}
-  \item Reproducibilidad del proceso (bitácora completa y coherente).
-  \item Control de fermentación (evidencia de tiempos y temperaturas).
-  \item Calidad del formado (tensión superficial adecuada, sellos correctos).
-  \item Calidad del horneado (expansión, corteza, coloración).
-  \item Análisis crítico (identificación de fallos y correcciones plausibles).
+  \item Infraestructura funcional y verificable.
+  \item Configuración técnica coherente con los objetivos de la actividad.
+  \item Evidencias claras de funcionamiento.
+  \item Documentación reproducible del procedimiento.
+  \item Identificación de riesgos, costos y problemas técnicos.
+  \item Análisis crítico de los resultados obtenidos.
 \end{itemize}
 
 \section{Proyecto final}
-El proyecto final consiste en diseñar una variación de la receta base para producir un pan con una meta
-explícita (por ejemplo: miga más abierta, corteza más delgada, mayor acidez, o mayor suavidad). El estudiante
-debe justificar técnicamente los cambios y documentar evidencia del resultado. Se espera un reporte con:
-formulación, parámetros, fotos, análisis y conclusiones.
-
-\newpage
-
-\section{Calendario tentativo}
-El calendario es tentativo y puede ajustarse por necesidades operativas. Las unidades se imparten en el
-orden siguiente:
-
-\begin{itemize}
-  \item Unidad 1: Ingredientes, porcentajes panaderos y medición.
-  \item Unidad 2: Mezclado, autólisis y desarrollo de gluten.
-  \item Unidad 3: Fermentación: tiempo, temperatura y maduración.
-  \item Unidad 4: Formado, tensión y estructura.
-  \item Unidad 5: Horneado: vapor, expansión, corteza y color.
-  \item Unidad 6: Diagnóstico de fallos y control de calidad.
-\end{itemize}
-
-\section{Bibliografía sugerida}
-\begin{itemize}
-  \item Hamelman, J. \textit{Bread: A Baker's Book of Techniques and Recipes}.
-  \item Forkish, K. \textit{Flour Water Salt Yeast}.
-  \item Calvel, R. \textit{The Taste of Bread}.
-  \item Suas, M. \textit{Advanced Bread and Pastry}.
-\end{itemize}
+El proyecto final consistirá en diseñar, implementar y documentar una solución apoyada en infraestructura cloud y tecnologías emergentes revisadas durante el curso. El estudiante deberá justificar la arquitectura, describir los servicios utilizados, presentar evidencias de funcionamiento, analizar riesgos y discutir limitaciones técnicas.
 
 \section{Cierre}
-Este texto largo es únicamente para validar que el encabezado y el pie de página se mantienen consistentes
-a lo largo de tres páginas. Si la salida muestra tres páginas con el mismo estilo, entonces la clase está
-correctamente configurada.
-
-% =====================================================================
-% ================= EJEMPLOS DE FUNCIONALIDADES DEL TEMPLATE ===========
-% =====================================================================
-
-\newpage
-\section{Ejemplos del template}
-
-\subsection{Idiomas y escritura segura}
-Texto en español con acentos explícitos: caf\'e, acci\'on, informaci\'on, ni\~no, Espa\~na.
-
-\begin{otherlanguage}{english}
-This paragraph is written in English.
-\end{otherlanguage}
-
-\begin{otherlanguage}{french}
-Ce paragraphe est en fran\c{c}ais.
-\end{otherlanguage}
-
-Texto mixto con \foreignlanguage{english}{inline English} dentro de una frase.
-
-\subsection{Pseudocódigo}
-
-\begin{algorithm}
-\caption{Proceso de fermentación controlada}
-\begin{algorithmic}[1]
-\Require Masa inicial $M$
-\Ensure Masa fermentada
-\State Ajustar temperatura
-\For{$t = 1$ to $T$}
-  \State Reposar($M$) \Comment{fermentación}
-\EndFor
-\State \Return $M$
-\end{algorithmic}
-\end{algorithm}
-
-\subsection{Código fuente}
-
-\begin{pythoncode}
-def hidratar(harina, agua):
-    return harina * agua
-\end{pythoncode}
-
-\begin{CodeBox}{Python}
-def hidratar(harina, agua):
-    return harina * agua
-\end{CodeBox}
-
-\begin{cppcode}
-#include <stdio.h>
-int main() {
-  printf("Pan listo\n");
-  return 0;
-}
-\end{cppcode}
-
-\begin{CodeBox}{C++}
-#include <stdio.h>
-int main() {
-  printf("Pan listo\n");
-  return 0;
-}
-\end{CodeBox}
-
-\subsection{Notas y observaciones}
-
-\Nota{Usa siempre \'{a}, \~n, etc. Por ejemplo: \textit{panificaci\'on}, \textit{ni\~nez}.}
-
-\Observaciones{Texto mezclado sin drama: This line is English. Ceci est fran\c{c}ais. Espa\~nol tambi\'en.}
-
-\Advertencia{Si cambias dos variables a la vez, tu conclusi\'on queda contaminada. Una variable por corrida.}
-
-\Tip{Para fotos de evidencia: luz frontal, fondo neutro, y referencia de escala (regla o moneda).}
+Esta guía sintetiza la estructura general del curso, sus políticas, el cronograma tentativo y los criterios de evaluación. Las actividades específicas podrán ajustarse según el avance del grupo, disponibilidad de plataformas y necesidades técnicas del curso.
 
 \end{document}
 

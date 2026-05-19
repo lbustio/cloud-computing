@@ -10,6 +10,12 @@ Desktop.ini
 *.log
 *.tmp
 *.temp
+*.aux
+*.out
+*.synctex.gz
 
 # VS Code (historial local)
 .history/
+
+# Folders
+build/

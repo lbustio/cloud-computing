@@ -1,0 +1,390 @@
+% !TEX program = pdflatex
+% !TEX root = 01.-tarea2.tex
+
+\documentclass[
+  coursetitle={Cómputo Nube y Tecnologías Emergentes},
+  coursehours={96},
+  coursedate={Verano 2026},
+  doctype={Tarea 2},
+  otherlangs={english,french},
+  authorname={Lázaro},
+  authorsurname={Bustio-Martínez},
+  authortitle={PhD},
+  role={Profesor Investigador},
+  email={lbustio@inaoe.mx},
+  phone={5559504000},
+  ext={7459},
+  institution={Instituto Nacional de Astrofísica, Óptica y Electrónica (INAOE)},
+  department={Maestría en Ciencias en Tecnologías de Seguridad},
+  address={Luis Enrique Erro 1, Sta. Ma. Tonantzintla, San Andrés Cholula, CP 72840, Puebla, México},
+  margin={0.5in}
+]{lbustio_lecture_notes}
+
+\usepackage{array}
+\usepackage{enumitem}
+\usepackage{url}
+
+\begin{document}
+
+\IberoCover
+
+\section{Creación de una máquina virtual Linux en Google Cloud Platform}
+\label{sec:tarea2-vm-gcp}
+
+\subsection{Curso}
+\label{sec:tarea2-curso}
+
+Cómputo nube y tecnologías emergentes.
+
+\subsection{Módulo}
+\label{sec:tarea2-modulo}
+
+Módulo 1. Fundamentos de Computación en la Nube e Infraestructura Cloud.
+
+\subsection{Tipo de actividad}
+\label{sec:tarea2-tipo-actividad}
+
+Práctica individual con reporte técnico.
+
+\subsection{Alcance de la tarea}
+\label{sec:tarea2-alcance}
+
+Esta tarea corresponde únicamente a la creación, configuración y verificación de una máquina virtual Linux en Google Cloud Platform.
+
+La actividad se concentra en:
+
+\begin{itemize}
+  \item crear una máquina virtual Linux en GCP;
+  \item configurar recursos básicos de cómputo;
+  \item configurar acceso remoto por SSH;
+  \item habilitar acceso HTTP;
+  \item instalar software básico en la máquina virtual;
+  \item desplegar un servidor web mínimo;
+  \item verificar conectividad pública;
+  \item documentar el procedimiento realizado;
+  \item identificar problemas técnicos encontrados;
+  \item detener o eliminar los recursos creados al finalizar.
+\end{itemize}
+
+Esta tarea no incluye la creación de buckets de almacenamiento. La creación de buckets corresponde a una actividad posterior del módulo sobre almacenamiento cloud.
+
+\subsection{Objetivo}
+\label{sec:tarea2-objetivo}
+
+Crear una máquina virtual Linux funcional en Google Cloud Platform mediante Compute Engine, configurarla de forma básica, acceder por SSH, instalar software desde la terminal y publicar un servicio web mínimo accesible desde Internet.
+
+El objetivo conceptual de la actividad es comprender, desde la práctica, los componentes básicos de una implementación IaaS en nube pública: instancia de cómputo, sistema operativo, región, zona, recursos de hardware, red, firewall, dirección IP pública, acceso remoto, costos y exposición de servicios.
+
+\subsection{Plataforma obligatoria}
+\label{sec:tarea2-plataforma}
+
+La práctica debe realizarse únicamente en:
+
+\begin{itemize}
+  \item Google Cloud Platform.
+\end{itemize}
+
+\subsection{Servicio principal}
+\label{sec:tarea2-servicio}
+
+El servicio principal que se utilizará es:
+
+\begin{itemize}
+  \item Compute Engine.
+\end{itemize}
+
+\subsection{Máquina virtual requerida}
+\label{sec:tarea2-vm-requerida}
+
+El estudiante deberá crear una máquina virtual con las siguientes características:
+
+\begin{center}
+\begin{tabular}{|p{0.36\textwidth}|p{0.52\textwidth}|}
+\hline
+\textbf{Parámetro} & \textbf{Valor requerido} \\
+\hline
+Nombre de la instancia & \texttt{course} \\
+\hline
+Plataforma & Google Cloud Platform \\
+\hline
+Servicio & Compute Engine \\
+\hline
+Sistema operativo & Debian GNU/Linux 12 Bookworm \\
+\hline
+Arquitectura & x86\_64 \\
+\hline
+Tipo de máquina sugerido & \texttt{e2-small} \\
+\hline
+CPU & 2 vCPU \\
+\hline
+Memoria RAM & 1 GB \\
+\hline
+Disco persistente & 10 GB \\
+\hline
+Acceso remoto & SSH \\
+\hline
+Tráfico HTTP & Habilitado \\
+\hline
+Servidor web & Nginx \\
+\hline
+Software adicional & \texttt{htop} y \texttt{mc} \\
+\hline
+\end{tabular}
+\end{center}
+
+\subsection{Software obligatorio}
+\label{sec:tarea2-software}
+
+Después de crear la máquina virtual, el estudiante deberá instalar los siguientes paquetes:
+
+\begin{verbatim}
+sudo apt update
+sudo apt install -y nginx htop mc
+\end{verbatim}
+
+El software solicitado cumple las siguientes funciones:
+
+\begin{center}
+\begin{tabular}{|p{0.22\textwidth}|p{0.66\textwidth}|}
+\hline
+\textbf{Software} & \textbf{Propósito} \\
+\hline
+Nginx & Servidor web mínimo para verificar publicación de un servicio en Internet. \\
+\hline
+\texttt{htop} & Monitor interactivo para observar procesos, CPU y memoria. \\
+\hline
+\texttt{mc} & Administrador de archivos en terminal. \\
+\hline
+\end{tabular}
+\end{center}
+
+\subsection{Puertos requeridos}
+\label{sec:tarea2-puertos}
+
+La máquina virtual deberá permitir únicamente los accesos necesarios para esta práctica.
+
+\begin{center}
+\begin{tabular}{|p{0.18\textwidth}|p{0.22\textwidth}|p{0.46\textwidth}|}
+\hline
+\textbf{Puerto} & \textbf{Protocolo} & \textbf{Uso} \\
+\hline
+22 & TCP & Acceso remoto por SSH \\
+\hline
+80 & TCP & Acceso HTTP al servidor web Nginx \\
+\hline
+\end{tabular}
+\end{center}
+
+No se deben abrir puertos adicionales.
+
+\subsection{Actividad práctica}
+\label{sec:tarea2-actividad}
+
+El estudiante deberá realizar las siguientes acciones:
+
+\begin{enumerate}
+  \item Ingresar a Google Cloud Platform.
+  \item Crear o seleccionar un proyecto de trabajo.
+  \item Verificar que la facturación esté habilitada si GCP lo solicita.
+  \item Acceder al servicio Compute Engine.
+  \item Crear una instancia de máquina virtual llamada \texttt{course}.
+  \item Seleccionar Debian GNU/Linux 12 Bookworm como sistema operativo.
+  \item Seleccionar arquitectura x86\_64.
+  \item Seleccionar un tipo de máquina pequeño, preferentemente \texttt{e2-small}.
+  \item Configurar un disco persistente de 10 GB.
+  \item Seleccionar una región y una zona.
+  \item Habilitar tráfico HTTP.
+  \item Crear la máquina virtual.
+  \item Conectarse a la máquina virtual por SSH.
+  \item Actualizar la lista de paquetes del sistema.
+  \item Instalar Nginx, \texttt{htop} y \texttt{mc}.
+  \item Verificar que Nginx esté activo.
+  \item Verificar que la página de Nginx responda desde el navegador.
+  \item Ejecutar \texttt{htop} y documentar su funcionamiento.
+  \item Ejecutar \texttt{mc} y documentar su funcionamiento.
+  \item Detener o eliminar la máquina virtual al finalizar la práctica.
+\end{enumerate}
+
+\subsection{Comandos mínimos esperados dentro de la VM}
+\label{sec:tarea2-comandos}
+
+Una vez conectado por SSH, el estudiante deberá ejecutar como mínimo:
+
+\begin{verbatim}
+sudo apt update
+sudo apt install -y nginx htop mc
+systemctl status nginx
+\end{verbatim}
+
+Para verificar Nginx desde la propia máquina virtual:
+
+\begin{verbatim}
+curl http://localhost
+\end{verbatim}
+
+Para revisar procesos y consumo de recursos:
+
+\begin{verbatim}
+htop
+\end{verbatim}
+
+Para abrir el administrador de archivos en terminal:
+
+\begin{verbatim}
+mc
+\end{verbatim}
+
+\subsection{Verificación del servidor web}
+\label{sec:tarea2-verificacion-web}
+
+El estudiante deberá obtener la dirección IP pública de la máquina virtual y abrirla desde un navegador.
+
+Formato esperado:
+
+\begin{verbatim}
+http://DIRECCION_IP_PUBLICA
+\end{verbatim}
+
+La evidencia debe mostrar que la página inicial de Nginx responde correctamente.
+
+\subsection{Aspectos que deben documentarse}
+\label{sec:tarea2-aspectos}
+
+El reporte debe incluir:
+
+\begin{enumerate}
+  \item Nombre del proyecto utilizado en GCP.
+  \item Nombre de la instancia creada.
+  \item Región seleccionada.
+  \item Zona seleccionada.
+  \item Sistema operativo elegido.
+  \item Tipo de máquina seleccionado.
+  \item CPU asignada.
+  \item Memoria RAM asignada.
+  \item Tamaño del disco persistente.
+  \item Dirección IP pública asignada.
+  \item Configuración de acceso SSH.
+  \item Configuración de firewall o permiso de tráfico HTTP.
+  \item Comandos usados para instalar Nginx, \texttt{htop} y \texttt{mc}.
+  \item Evidencia de que Nginx está instalado y activo.
+  \item Evidencia de que la página de Nginx responde desde el navegador.
+  \item Evidencia de ejecución de \texttt{htop}.
+  \item Evidencia de ejecución de \texttt{mc}.
+  \item Problemas encontrados durante la práctica.
+  \item Soluciones aplicadas.
+  \item Costo estimado o advertencia de costo mostrada por GCP.
+  \item Evidencia de que la VM fue detenida o eliminada al finalizar.
+\end{enumerate}
+
+\subsection{Evidencias mínimas}
+\label{sec:tarea2-evidencias}
+
+El reporte debe incluir capturas de pantalla o salidas de terminal que demuestren:
+
+\begin{enumerate}
+  \item Instancia \texttt{course} creada en Compute Engine.
+  \item Configuración general de la VM.
+  \item Sistema operativo Debian GNU/Linux 12 Bookworm.
+  \item Dirección IP pública de la VM.
+  \item Permiso de tráfico HTTP habilitado.
+  \item Conexión SSH exitosa.
+  \item Instalación de Nginx, \texttt{htop} y \texttt{mc}.
+  \item Estado activo de Nginx.
+  \item Página de Nginx visible desde navegador.
+  \item Ejecución de \texttt{htop}.
+  \item Ejecución de \texttt{mc}.
+  \item Detención o eliminación de la VM.
+\end{enumerate}
+
+\subsection{Estructura del reporte}
+\label{sec:tarea2-estructura-reporte}
+
+El reporte debe entregarse en PDF y seguir esta estructura:
+
+\begin{enumerate}
+  \item Portada.
+  \item Introducción breve.
+  \item Descripción de la máquina virtual creada.
+  \item Configuración de red y acceso.
+  \item Instalación del software requerido.
+  \item Verificación del servidor web.
+  \item Verificación de \texttt{htop} y \texttt{mc}.
+  \item Problemas encontrados y soluciones aplicadas.
+  \item Costos observados o estimados.
+  \item Riesgos identificados.
+  \item Conclusiones.
+  \item Evidencias.
+\end{enumerate}
+
+\subsection{Análisis técnico requerido}
+\label{sec:tarea2-analisis}
+
+El reporte debe responder brevemente las siguientes preguntas:
+
+\begin{enumerate}
+  \item ¿Qué función cumple Compute Engine dentro del modelo IaaS?
+  \item ¿Qué pasos fueron necesarios para crear una máquina virtual funcional?
+  \item ¿Por qué fue necesario configurar acceso SSH?
+  \item ¿Por qué fue necesario permitir tráfico HTTP?
+  \item ¿Qué evidencia demuestra que la VM quedó funcionando correctamente?
+  \item ¿Qué utilidad tienen Nginx, \texttt{htop} y \texttt{mc} dentro de una VM Linux?
+  \item ¿Qué riesgos existen al exponer servicios en una máquina virtual pública?
+  \item ¿Qué riesgos existen si se dejan recursos activos sin supervisión?
+  \item ¿Qué problemas técnicos aparecieron durante la práctica y cómo se resolvieron?
+\end{enumerate}
+
+\subsection{Restricciones}
+\label{sec:tarea2-restricciones}
+
+\begin{itemize}
+  \item La práctica debe realizarse únicamente en Google Cloud Platform.
+  \item No se debe usar AWS ni Azure en esta tarea.
+  \item No se debe crear un bucket en esta tarea.
+  \item No se deben abrir puertos innecesarios.
+  \item No se deben publicar contraseñas, llaves privadas, tokens ni credenciales.
+  \item No se deben usar configuraciones costosas.
+  \item No se debe instalar software adicional salvo que sea estrictamente necesario para resolver un problema técnico.
+  \item La máquina virtual debe detenerse o eliminarse al terminar la práctica.
+  \item El reporte debe basarse en la práctica realizada, no en una descripción genérica tomada de Internet.
+\end{itemize}
+
+\subsection{Criterios de evaluación}
+\label{sec:tarea2-criterios}
+
+\begin{center}
+\begin{tabular}{|p{0.70\textwidth}|r|}
+\hline
+\textbf{Criterio} & \textbf{Ponderación} \\
+\hline
+Creación correcta de la VM en GCP & 25\% \\
+\hline
+Configuración adecuada de SSH, red y HTTP & 20\% \\
+\hline
+Instalación y verificación de Nginx, \texttt{htop} y \texttt{mc} & 20\% \\
+\hline
+Evidencias claras y suficientes & 15\% \\
+\hline
+Análisis técnico de la práctica & 15\% \\
+\hline
+Orden, redacción y presentación del reporte & 5\% \\
+\hline
+\end{tabular}
+\end{center}
+
+\subsection{Entregable}
+\label{sec:tarea2-entregable}
+
+El estudiante deberá entregar un archivo PDF con el reporte completo.
+
+El nombre del archivo debe seguir el siguiente formato:
+
+\begin{verbatim}
+Tarea2_ApellidoNombre.pdf
+\end{verbatim}
+
+\subsection{Resultado esperado}
+\label{sec:tarea2-resultado}
+
+Al finalizar esta tarea, el estudiante deberá ser capaz de crear una máquina virtual básica en Google Cloud Platform, conectarse por SSH, instalar software desde la terminal, publicar un servicio web mínimo con Nginx, revisar procesos con \texttt{htop}, usar \texttt{mc} como administrador de archivos en terminal y comprender los elementos básicos de una implementación IaaS en una nube pública.
+
+\end{document}

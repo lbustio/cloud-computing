@@ -1,0 +1,211 @@
+\documentclass[
+  coursetitle={Cómputo Nube y Tecnologías Emergentes},
+  coursehours={96},
+  coursedate={Verano 2026},
+  doctype={Tarea 1},
+  otherlangs={english,french},
+  authorname={Lázaro},
+  authorsurname={Bustio-Martínez},
+  authortitle={PhD},
+  role={Profesor Investigador},
+  email={lbustio@inaoe.mx},
+  phone={5559504000},
+  ext={7459},
+  institution={Instituto Nacional de Astrofísica, Óptica y Electrónica (INAOE)},
+  department={Maestría en Ciencias en Tecnologías de Seguridad},
+  address={Luis Enrique Erro 1, Sta. Ma. Tonantzintla, San Andrés Cholula, CP 72840, Puebla, México},
+  margin={0.5in}
+]{lbustio_lecture_notes}
+
+\usepackage{array}
+\usepackage{enumitem}
+
+\begin{document}
+
+\IberoCover
+
+\section{Comparación práctica de servicios IaaS en AWS, Azure y Google Cloud}
+\label{sec:tarea-iaas-aws-azure-gcp}
+
+\subsection{Objetivo}
+\label{sec:tarea1-objetivo}
+
+El objetivo de esta tarea es comprobar, mediante una actividad práctica, que las principales plataformas de nube pública usan conceptos técnicos equivalentes para desplegar infraestructura, aunque cambien los nombres de los servicios, las interfaces, los flujos de configuración y algunos valores por defecto.
+
+La actividad se relaciona con los contenidos del curso sobre computación en la nube, modelos IaaS, nube pública, arquitecturas multicloud, costos, seguridad, IAM, redes y firewalls.
+
+\subsection{Actividad}
+\label{sec:tarea1-actividad}
+
+Cada estudiante deberá seleccionar una tarea técnica sencilla y realizarla en las tres plataformas siguientes:
+
+\begin{itemize}
+  \item Amazon Web Services (AWS).
+  \item Microsoft Azure.
+  \item Google Cloud Platform (GCP).
+\end{itemize}
+
+La tarea recomendada es:
+
+\begin{quote}
+\textbf{Crear una máquina virtual Linux básica, habilitar el acceso remoto por SSH y desplegar un servicio web mínimo.}
+\end{quote}
+
+También se podrá elegir otra tarea equivalente, siempre que pueda realizarse en las tres plataformas y permita comparar conceptos técnicos similares.
+
+\subsection{Tarea técnica sugerida}
+\label{sec:tarea1-tarea-tecnica}
+
+Crear una máquina virtual en cada plataforma con características lo más equivalentes posible:
+
+\begin{itemize}
+  \item Sistema operativo: Ubuntu Server o Debian.
+  \item Tipo de instancia: el más pequeño posible dentro de la capa gratuita o de bajo costo.
+  \item Región: elegir una región disponible y justificar la elección.
+  \item Disco: configuración mínima disponible.
+  \item Red: configuración básica por defecto, documentando la red virtual creada o utilizada.
+  \item Seguridad: habilitar únicamente los puertos necesarios.
+  \item Acceso remoto: conexión por SSH.
+  \item Servicio de prueba: instalar un servidor web básico, por ejemplo Apache o Nginx, y verificar que responde desde el navegador.
+\end{itemize}
+
+\subsection{Aspectos que deben documentarse}
+\label{sec:tarea1-aspectos}
+
+Para cada plataforma se debe reportar:
+
+\begin{enumerate}
+  \item Nombre del servicio usado para crear la máquina virtual.
+  \item Región o zona seleccionada.
+  \item Sistema operativo elegido.
+  \item Tipo de instancia o tamaño de máquina.
+  \item CPU, memoria RAM y disco asignados.
+  \item Método de acceso remoto.
+  \item Configuración de red.
+  \item Reglas de firewall, security group o mecanismo equivalente.
+  \item Pasos principales realizados.
+  \item Evidencia de funcionamiento.
+  \item Estimación de costo.
+  \item Problemas encontrados durante la configuración.
+\end{enumerate}
+
+\subsection{Comparación obligatoria}
+\label{sec:tarea1-comparacion}
+
+El reporte debe incluir una tabla comparativa con los conceptos equivalentes entre plataformas.
+
+\begin{center}
+\begin{tabular}{|p{0.25\textwidth}|p{0.20\textwidth}|p{0.20\textwidth}|p{0.20\textwidth}|}
+\hline
+\textbf{Concepto} & \textbf{AWS} & \textbf{Azure} & \textbf{Google Cloud} \\
+\hline
+Máquina virtual & & & \\
+\hline
+Imagen de sistema operativo & & & \\
+\hline
+Región/zona & & & \\
+\hline
+Tipo de instancia & & & \\
+\hline
+Disco & & & \\
+\hline
+Red virtual & & & \\
+\hline
+Firewall / reglas de entrada & & & \\
+\hline
+Acceso SSH & & & \\
+\hline
+Estimación de costo & & & \\
+\hline
+Monitoreo básico & & & \\
+\hline
+\end{tabular}
+\end{center}
+
+\subsection{Análisis requerido}
+\label{sec:tarea1-analisis}
+
+El reporte no debe limitarse a describir pasos. Debe responder, con base en la experiencia práctica, las siguientes preguntas:
+
+\begin{enumerate}
+  \item ¿Qué conceptos aparecen en las tres plataformas aunque tengan nombres distintos?
+  \item ¿Qué diferencias son solamente de interfaz o de nomenclatura?
+  \item ¿Qué diferencias afectan realmente la configuración técnica?
+  \item ¿Cuál plataforma fue más clara para realizar la tarea?
+  \item ¿Cuál plataforma presentó más obstáculos?
+  \item ¿Cuál plataforma elegiría para repetir esta tarea en un contexto real y por qué?
+  \item ¿La actividad confirma o contradice la idea de que los conceptos fundamentales de IaaS son equivalentes entre nubes públicas?
+\end{enumerate}
+
+\subsection{Evidencias mínimas}
+\label{sec:tarea1-evidencias}
+
+El reporte debe incluir capturas de pantalla o evidencias equivalentes de:
+
+\begin{itemize}
+  \item máquina virtual creada en AWS;
+  \item máquina virtual creada en Azure;
+  \item máquina virtual creada en GCP;
+  \item reglas de red o firewall configuradas;
+  \item conexión SSH exitosa;
+  \item servicio web funcionando;
+  \item estimación de costo o calculadora de precios usada.
+\end{itemize}
+
+\subsection{Entregable}
+\label{sec:tarea1-entregable}
+
+Se deberá entregar un reporte en PDF con la siguiente estructura:
+
+\begin{enumerate}
+  \item Portada.
+  \item Introducción breve.
+  \item Descripción de la tarea seleccionada.
+  \item Implementación en AWS.
+  \item Implementación en Azure.
+  \item Implementación en Google Cloud.
+  \item Tabla comparativa.
+  \item Análisis crítico.
+  \item Conclusiones.
+  \item Referencias consultadas.
+  \item Anexos con evidencias, si son necesarios.
+\end{enumerate}
+
+\subsection{Criterios de evaluación}
+\label{sec:tarea1-criterios}
+
+\begin{center}
+\begin{tabular}{|p{0.72\textwidth}|p{0.18\textwidth}|}
+\hline
+\textbf{Criterio} & \textbf{Ponderación} \\
+\hline
+Implementación correcta en las tres plataformas & 30\% \\
+\hline
+Documentación técnica clara y verificable & 20\% \\
+\hline
+Comparación conceptual entre AWS, Azure y GCP & 20\% \\
+\hline
+Análisis crítico de diferencias y equivalencias & 20\% \\
+\hline
+Presentación, orden y calidad del reporte & 10\% \\
+\hline
+\end{tabular}
+\end{center}
+
+\subsection{Restricciones}
+\label{sec:tarea1-restricciones}
+
+\begin{itemize}
+  \item No se evaluará positivamente una comparación basada solo en información tomada de páginas web.
+  \item La comparación debe estar basada en la experiencia práctica del estudiante.
+  \item No basta con describir que una plataforma ``es mejor'' o ``es más fácil''; toda conclusión debe justificarse con evidencia.
+  \item Se deben eliminar todos los recursos creados al terminar la práctica para evitar cargos innecesarios.
+  \item Si se usan cuentas gratuitas, se debe trabajar dentro de los límites de uso gratuito o de bajo costo.
+\end{itemize}
+
+\subsection{Resultado esperado}
+\label{sec:tarea1-resultado}
+
+Al finalizar la tarea, el estudiante deberá ser capaz de explicar que AWS, Azure y Google Cloud implementan conceptos equivalentes para el despliegue de infraestructura IaaS, aunque usen interfaces, nombres, flujos y políticas distintas. También deberá distinguir entre diferencias superficiales, diferencias operativas y diferencias que sí pueden influir en una decisión técnica real.
+
+\end{document}

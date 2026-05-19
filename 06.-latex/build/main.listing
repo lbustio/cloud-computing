@@ -1,5 +1,0 @@
-#include <stdio.h>
-int main() {
-  printf("Pan listo\n");
-  return 0;
-}
