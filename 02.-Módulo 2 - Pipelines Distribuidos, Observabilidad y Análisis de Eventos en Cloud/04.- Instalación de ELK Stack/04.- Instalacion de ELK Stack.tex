@@ -1,0 +1,1096 @@
+\documentclass[
+  coursetitle={Cómputo Nube y Tecnologías Emergentes},
+  coursehours={96},
+  coursedate={Verano 2026},
+  doctype={Laboratorio},
+  otherlangs={english,french},
+  authorname={Lázaro},
+  authorsurname={Bustio-Martínez},
+  authortitle={PhD},
+  role={Profesor Investigador},
+  email={lbustio@inaoe.mx},
+  phone={5559504000},
+  ext={7459},
+  institution={Instituto Nacional de Astrofísica, Óptica y Electrónica (INAOE)},
+  department={Maestría en Ciencias en Tecnologías de Seguridad},
+  address={Luis Enrique Erro 1, Sta. Ma. Tonantzintla, San Andrés Cholula, CP 72840, Puebla, México},
+  margin={0.5in}
+]{../../lbustio_lecture_notes}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{array}
+\usepackage{tabularx}
+\usepackage{enumitem}
+\usepackage{longtable}
+\usepackage{booktabs}
+\usepackage{url}
+\usepackage{listings}
+\usepackage{xcolor}
+
+\lstset{
+  basicstyle=\ttfamily\small,
+  breaklines=true,
+  frame=single,
+  columns=fullflexible
+}
+
+\begin{document}
+
+\IberoCover
+
+\section{Introducción}
+
+Este laboratorio tiene como objetivo desplegar un entorno funcional basado en Elasticsearch, Logstash y Kibana, conocido comúnmente como ELK Stack, dentro de una máquina virtual Linux hospedada en Google Cloud Platform.
+
+El despliegue se realizará utilizando Docker y Docker Compose sobre una máquina virtual Debian 12. La finalidad no es construir una instalación productiva, sino comprender de forma práctica la relación entre infraestructura cloud, servicios Linux, contenedores, puertos, firewall, autenticación básica, almacenamiento de documentos y visualización de datos.
+
+El entorno ELK es utilizado en escenarios reales de monitoreo, observabilidad, análisis de logs, operaciones DevOps, ciberseguridad, análisis forense y sistemas tipo SIEM. Sin embargo, la configuración utilizada en este laboratorio tiene fines exclusivamente académicos y de prueba.
+
+\section{Qué NO hace este laboratorio}
+
+Este laboratorio NO corresponde a una instalación productiva de ELK.
+
+En particular, no se configurará:
+
+\begin{itemize}
+    \item alta disponibilidad;
+    \item clúster Elasticsearch real de múltiples nodos;
+    \item persistencia robusta para producción;
+    \item TLS;
+    \item certificados digitales;
+    \item autenticación avanzada;
+    \item usuarios y roles personalizados;
+    \item Filebeat;
+    \item pipelines reales de Logstash;
+    \item snapshots;
+    \item políticas de retención;
+    \item monitoreo productivo;
+    \item hardening de seguridad.
+\end{itemize}
+
+Por tanto, el resultado del laboratorio NO debe interpretarse como un despliegue listo para producción. Se trata de una práctica controlada para aprender conceptos técnicos fundamentales.
+
+\section{Objetivos del laboratorio}
+
+\subsection{Objetivo general}
+
+Desplegar y validar un entorno funcional basado en Docker-ELK dentro de una máquina virtual Linux en Google Cloud Platform.
+
+\subsection{Objetivos específicos}
+
+Al finalizar el laboratorio, el estudiante deberá ser capaz de:
+
+\begin{itemize}
+    \item modificar recursos de infraestructura cloud;
+    \item verificar recursos desde Linux;
+    \item instalar Docker y Docker Compose;
+    \item desplegar múltiples servicios mediante contenedores;
+    \item validar servicios HTTP;
+    \item configurar reglas de firewall en GCP;
+    \item comprender la diferencia entre servicios locales y servicios expuestos externamente;
+    \item acceder remotamente a Kibana;
+    \item insertar documentos en Elasticsearch;
+    \item visualizar datos desde Discover;
+    \item identificar problemas comunes relacionados con puertos, firewall, autenticación y filtros temporales.
+\end{itemize}
+
+\section{Arquitectura general del laboratorio}
+
+\subsection{Componentes principales}
+
+\subsubsection{Elasticsearch}
+
+Elasticsearch es el motor de búsqueda e indexación del stack. Su función es almacenar documentos, indexarlos y permitir consultas eficientes sobre ellos.
+
+En este laboratorio, Elasticsearch recibirá documentos JSON insertados manualmente mediante peticiones HTTP.
+
+\subsubsection{Logstash}
+
+Logstash es una herramienta de ingestión y transformación de datos. En escenarios reales permite recibir logs, procesarlos, transformarlos y enviarlos hacia Elasticsearch.
+
+En este laboratorio, Logstash se desplegará como parte del stack, aunque no se construirá un pipeline avanzado.
+
+\subsubsection{Kibana}
+
+Kibana es la interfaz web que permite explorar y visualizar información almacenada en Elasticsearch.
+
+En este laboratorio se utilizará principalmente Discover para validar que los documentos insertados en Elasticsearch pueden visualizarse desde una interfaz gráfica.
+
+\subsubsection{Docker}
+
+Docker permite ejecutar aplicaciones dentro de contenedores aislados y reproducibles. Esto evita instalar manualmente cada componente del stack en el sistema operativo.
+
+\subsubsection{Docker Compose}
+
+Docker Compose permite definir y ejecutar varios contenedores relacionados mediante archivos de configuración.
+
+En el proyecto docker-elk, Compose administra:
+
+\begin{itemize}
+    \item redes internas entre contenedores;
+    \item volúmenes;
+    \item variables de entorno;
+    \item dependencias entre servicios;
+    \item exposición de puertos;
+    \item contextos de construcción;
+    \item arranque coordinado del stack.
+\end{itemize}
+
+\section{Puertos principales del laboratorio}
+
+\begin{center}
+\begin{tabularx}{0.95\textwidth}{|>{\raggedright\arraybackslash}p{0.18\textwidth}|>{\raggedright\arraybackslash}p{0.25\textwidth}|>{\raggedright\arraybackslash}X|}
+\hline
+\textbf{Puerto} & \textbf{Servicio} & \textbf{Uso} \\
+\hline
+9200 & Elasticsearch & API HTTP para consultas, indexación y administración básica. \\
+\hline
+9300 & Elasticsearch & Comunicación interna entre nodos Elasticsearch. No se usa directamente en este laboratorio. \\
+\hline
+5601 & Kibana & Interfaz web accesible desde navegador. \\
+\hline
+5044 & Logstash & Puerto típico para ingestión desde Beats, como Filebeat. No se usará directamente en esta práctica. \\
+\hline
+22 & SSH & Acceso remoto a la máquina virtual. \\
+\hline
+\end{tabularx}
+\end{center}
+
+\section{Flujo general del laboratorio}
+
+\begin{enumerate}
+    \item Preparar infraestructura cloud.
+    \item Verificar recursos Linux.
+    \item Instalar Docker y Docker Compose.
+    \item Instalar Git.
+    \item Descargar docker-elk.
+    \item Ejecutar el setup inicial del stack.
+    \item Levantar los servicios en segundo plano.
+    \item Verificar Elasticsearch.
+    \item Verificar Kibana.
+    \item Configurar firewall y network tag.
+    \item Acceder remotamente a Kibana.
+    \item Insertar documentos en Elasticsearch.
+    \item Crear un Data View.
+    \item Visualizar documentos en Discover.
+    \item Apagar correctamente contenedores y VM.
+\end{enumerate}
+
+\section{Preparación de infraestructura cloud}
+
+\subsection{Objetivo}
+
+Preparar una máquina virtual con recursos suficientes para ejecutar Elasticsearch, Logstash y Kibana.
+
+\subsection{Justificación técnica}
+
+Elasticsearch consume memoria de forma intensiva debido a la JVM, procesos de indexación, cachés internas, manejo de shards y almacenamiento distribuido. Una VM demasiado pequeña puede provocar errores de memoria, reinicios, contenedores detenidos o fallos completos del stack.
+
+\subsection{Configuración requerida}
+
+\begin{center}
+\begin{tabularx}{0.8\textwidth}{|>{\raggedright\arraybackslash}X|>{\raggedright\arraybackslash}X|}
+\hline
+\textbf{Parámetro} & \textbf{Valor requerido} \\
+\hline
+Tipo de máquina & e2-standard-2 \\
+\hline
+CPU & 2 vCPU \\
+\hline
+RAM & 8 GB \\
+\hline
+Disco & 20 GB \\
+\hline
+Sistema operativo & Debian 12 \\
+\hline
+\end{tabularx}
+\end{center}
+
+\subsection{Procedimiento}
+
+Entrar a:
+
+\begin{verbatim}
+Compute Engine -> VM instances
+\end{verbatim}
+
+Detener la VM.
+
+Esperar hasta que el estado sea:
+
+\begin{verbatim}
+Terminated
+\end{verbatim}
+
+Editar la instancia y configurar:
+
+\begin{verbatim}
+Machine type: e2-standard-2
+\end{verbatim}
+
+Después entrar a:
+
+\begin{verbatim}
+Compute Engine -> Disks
+\end{verbatim}
+
+Seleccionar el disco asociado a la VM e incrementar su tamaño a:
+
+\begin{verbatim}
+20 GB
+\end{verbatim}
+
+Finalmente, iniciar nuevamente la VM y esperar que el estado sea:
+
+\begin{verbatim}
+Running
+\end{verbatim}
+
+\section{Verificación de recursos Linux}
+
+\subsection{Objetivo}
+
+Confirmar desde el sistema operativo que la VM realmente recibió los recursos configurados en GCP.
+
+\subsection{Memoria RAM}
+
+Ejecutar:
+
+\begin{lstlisting}
+free -h
+\end{lstlisting}
+
+Resultado esperado aproximado:
+
+\begin{verbatim}
+Mem: 7.8Gi
+\end{verbatim}
+
+Esto es normal. GCP muestra memoria en GB decimales, mientras Linux suele reportar memoria en GiB binarios. Además, una parte queda reservada por el kernel y servicios del sistema.
+
+\subsection{CPU}
+
+Ejecutar:
+
+\begin{lstlisting}
+nproc
+\end{lstlisting}
+
+Resultado esperado:
+
+\begin{verbatim}
+2
+\end{verbatim}
+
+\subsection{Arquitectura}
+
+Ejecutar:
+
+\begin{lstlisting}
+lscpu
+\end{lstlisting}
+
+Resultado esperado aproximado:
+
+\begin{verbatim}
+Architecture: x86_64
+CPU(s): 2
+\end{verbatim}
+
+\subsection{Disco}
+
+Ejecutar:
+
+\begin{lstlisting}
+df -h
+\end{lstlisting}
+
+Resultado esperado aproximado:
+
+\begin{verbatim}
+/dev/sda1 20G
+\end{verbatim}
+
+\section{Instalación de Docker y Docker Compose}
+
+\subsection{Objetivo}
+
+Instalar Docker Engine y Docker Compose para ejecutar el stack ELK mediante contenedores.
+
+\subsection{Procedimiento}
+
+Actualizar paquetes:
+
+\begin{lstlisting}
+sudo apt update
+\end{lstlisting}
+
+Instalar dependencias:
+
+\begin{lstlisting}
+sudo apt install -y \
+ca-certificates \
+curl \
+gnupg \
+lsb-release
+\end{lstlisting}
+
+Crear directorio para llaves:
+
+\begin{lstlisting}
+sudo install -m 0755 -d /etc/apt/keyrings
+\end{lstlisting}
+
+Descargar llave oficial de Docker:
+
+\begin{lstlisting}
+curl -fsSL https://download.docker.com/linux/debian/gpg | \
+sudo gpg --dearmor -o /etc/apt/keyrings/docker.gpg
+\end{lstlisting}
+
+Asignar permisos:
+
+\begin{lstlisting}
+sudo chmod a+r /etc/apt/keyrings/docker.gpg
+\end{lstlisting}
+
+Agregar repositorio oficial:
+
+\begin{lstlisting}
+echo \
+"deb [arch=$(dpkg --print-architecture) \
+signed-by=/etc/apt/keyrings/docker.gpg] \
+https://download.docker.com/linux/debian \
+$(. /etc/os-release && echo "$VERSION_CODENAME") stable" | \
+sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+\end{lstlisting}
+
+Actualizar nuevamente:
+
+\begin{lstlisting}
+sudo apt update
+\end{lstlisting}
+
+Instalar Docker:
+
+\begin{lstlisting}
+sudo apt install -y \
+docker-ce \
+docker-ce-cli \
+containerd.io \
+docker-buildx-plugin \
+docker-compose-plugin
+\end{lstlisting}
+
+Habilitar y arrancar Docker:
+
+\begin{lstlisting}
+sudo systemctl enable docker
+sudo systemctl start docker
+\end{lstlisting}
+
+Agregar el usuario actual al grupo docker:
+
+\begin{lstlisting}
+sudo usermod -aG docker $USER
+newgrp docker
+\end{lstlisting}
+
+\subsection{Validación}
+
+Ejecutar:
+
+\begin{lstlisting}
+docker --version
+docker compose version
+docker run hello-world
+\end{lstlisting}
+
+Si aparece un error de permisos, revisar la sección de troubleshooting.
+
+\section{Instalación de Git}
+
+\subsection{Objetivo}
+
+Instalar Git para descargar el proyecto docker-elk desde GitHub.
+
+\subsection{Procedimiento}
+
+\begin{lstlisting}
+sudo apt update
+sudo apt install -y git
+git --version
+\end{lstlisting}
+
+\section{Descarga del proyecto docker-elk}
+
+\subsection{Objetivo}
+
+Descargar el proyecto docker-elk en una ruta consistente dentro del sistema Linux.
+
+\subsection{Ruta de trabajo}
+
+Para este laboratorio se usará:
+
+\begin{verbatim}
+~/downloads/gits
+\end{verbatim}
+
+Esta ruta se usa para evitar depender de directorios creados automáticamente por el entorno gráfico o por el locale del sistema. En servidores Linux mínimos, directorios como \texttt{Downloads} pueden no existir.
+
+\subsection{Procedimiento}
+
+Crear la estructura:
+
+\begin{lstlisting}
+mkdir -p ~/downloads/gits
+cd ~/downloads/gits
+\end{lstlisting}
+
+Clonar el repositorio:
+
+\begin{lstlisting}
+git clone https://github.com/deviantony/docker-elk.git
+\end{lstlisting}
+
+Entrar al proyecto:
+
+\begin{lstlisting}
+cd docker-elk
+\end{lstlisting}
+
+Verificar contenido:
+
+\begin{lstlisting}
+ls
+\end{lstlisting}
+
+Deberán observarse archivos y directorios como:
+
+\begin{verbatim}
+docker-compose.yml
+elasticsearch
+kibana
+logstash
+setup
+\end{verbatim}
+
+\section{Despliegue del stack ELK}
+
+\subsection{Objetivo}
+
+Inicializar y ejecutar Elasticsearch, Logstash y Kibana mediante Docker Compose.
+
+\subsection{Setup inicial}
+
+Ejecutar:
+
+\begin{lstlisting}
+docker compose up setup
+\end{lstlisting}
+
+Este paso es crítico. No levanta todavía todo el stack para uso normal. Su función es preparar componentes internos requeridos por docker-elk, incluyendo inicialización de seguridad, configuración inicial, certificados internos, contraseñas y elementos necesarios para que los servicios principales arranquen correctamente.
+
+Debe ejecutarse antes de levantar el stack completo.
+
+\subsection{Levantamiento del stack}
+
+Ejecutar:
+
+\begin{lstlisting}
+docker compose up -d
+\end{lstlisting}
+
+La opción:
+
+\begin{verbatim}
+-d
+\end{verbatim}
+
+significa \textit{detached mode}. Esto ejecuta los contenedores en segundo plano y devuelve el control de la terminal.
+
+Que la terminal regrese inmediatamente NO significa que los servicios ya estén completamente listos. Solamente significa que Docker Compose inició los contenedores en segundo plano.
+
+\subsection{Validación con Docker Compose}
+
+Ejecutar:
+
+\begin{lstlisting}
+docker compose ps
+\end{lstlisting}
+
+Esto muestra el estado de los servicios definidos por Compose.
+
+También puede ejecutarse:
+
+\begin{lstlisting}
+docker ps
+\end{lstlisting}
+
+Todos los contenedores principales deberán aparecer en estado:
+
+\begin{verbatim}
+Up
+\end{verbatim}
+
+\subsection{Tiempo de arranque de Kibana}
+
+Kibana puede tardar varios minutos más que Elasticsearch en estar disponible. Durante ese tiempo pueden aparecer síntomas como timeout, pantalla vacía, loading, errores 502 o redirecciones incompletas.
+
+Esto no implica necesariamente un fallo. Antes de diagnosticar el servicio como roto, se debe esperar y revisar logs.
+
+\section{Validación de Elasticsearch}
+
+\subsection{Objetivo}
+
+Verificar que Elasticsearch esté activo y responda peticiones HTTP.
+
+\subsection{Seguridad habilitada por defecto}
+
+Las versiones modernas de Elasticsearch utilizadas por docker-elk tienen seguridad habilitada por defecto. Por eso, una petición sin credenciales no devuelve información del clúster, sino un error de autenticación.
+
+\subsection{Validación sin autenticación}
+
+Ejecutar:
+
+\begin{lstlisting}
+curl http://localhost:9200
+\end{lstlisting}
+
+Resultado esperado:
+
+\begin{verbatim}
+401 security_exception
+\end{verbatim}
+
+Esto NO es un fallo.
+
+El código 401 indica que:
+
+\begin{itemize}
+    \item Elasticsearch está activo;
+    \item el puerto 9200 responde;
+    \item la seguridad está habilitada;
+    \item el servicio requiere autenticación.
+\end{itemize}
+
+\subsection{Validación con autenticación}
+
+Ejecutar:
+
+\begin{lstlisting}
+curl -u elastic:changeme http://localhost:9200
+\end{lstlisting}
+
+Resultado esperado aproximado:
+
+\begin{verbatim}
+{
+  "name" : "...",
+  "cluster_name" : "docker-cluster",
+  "version" : {
+    "number" : "..."
+  },
+  "tagline" : "You Know, for Search"
+}
+\end{verbatim}
+
+\section{Validación de Kibana}
+
+\subsection{Objetivo}
+
+Verificar que Kibana esté activo localmente y escuchando en una interfaz accesible.
+
+\subsection{Validación local}
+
+Ejecutar:
+
+\begin{lstlisting}
+curl -I http://localhost:5601
+\end{lstlisting}
+
+Resultado esperado:
+
+\begin{verbatim}
+HTTP/1.1 302 Found
+\end{verbatim}
+
+El código 302 indica que Kibana responde y redirige hacia la pantalla de autenticación.
+
+\subsection{Verificación de interfaz de red}
+
+Ejecutar:
+
+\begin{lstlisting}
+sudo ss -tulpn | grep 5601
+\end{lstlisting}
+
+Resultado esperado:
+
+\begin{verbatim}
+0.0.0.0:5601
+\end{verbatim}
+
+\subsection{127.0.0.1 vs 0.0.0.0}
+
+Si un servicio escucha en:
+
+\begin{verbatim}
+127.0.0.1
+\end{verbatim}
+
+solo acepta conexiones desde la propia máquina.
+
+Si escucha en:
+
+\begin{verbatim}
+0.0.0.0
+\end{verbatim}
+
+acepta conexiones desde cualquier interfaz de red disponible. Esto es necesario para que Kibana pueda ser accedido desde fuera de la VM.
+
+\section{Configuración de firewall en GCP}
+
+\subsection{Objetivo}
+
+Permitir acceso externo al puerto 5601 de Kibana desde Internet.
+
+\subsection{Punto crítico}
+
+El acceso externo depende de dos elementos:
+
+\begin{enumerate}
+    \item una regla de firewall correctamente definida;
+    \item un network tag aplicado a la VM.
+\end{enumerate}
+
+Si falta cualquiera de los dos, Kibana puede funcionar dentro de la VM pero ser inaccesible desde el navegador externo.
+
+\subsection{Crear regla de firewall}
+
+Entrar a:
+
+\begin{verbatim}
+VPC network -> Firewall
+\end{verbatim}
+
+Crear una regla con los siguientes valores:
+
+\begin{center}
+\begin{tabularx}{0.95\textwidth}{|>{\raggedright\arraybackslash}p{0.35\textwidth}|>{\raggedright\arraybackslash}X|}
+\hline
+\textbf{Campo} & \textbf{Valor} \\
+\hline
+Name & allow-kibana-5601 \\
+\hline
+Network & default \\
+\hline
+Priority & 1000 \\
+\hline
+Direction of traffic & Ingress \\
+\hline
+Action on match & Allow \\
+\hline
+Targets & Specified target tags \\
+\hline
+Target tags & kibana-server \\
+\hline
+Source filter & IPv4 ranges \\
+\hline
+Source IPv4 ranges & 0.0.0.0/0 \\
+\hline
+Protocols and ports & TCP: 5601 \\
+\hline
+\end{tabularx}
+\end{center}
+
+\subsection{Aplicar network tag a la VM}
+
+Entrar a:
+
+\begin{verbatim}
+Compute Engine -> VM instances
+\end{verbatim}
+
+Editar la VM y agregar en:
+
+\begin{verbatim}
+Network tags
+\end{verbatim}
+
+la etiqueta:
+
+\begin{verbatim}
+kibana-server
+\end{verbatim}
+
+Guardar cambios.
+
+\section{Acceso remoto a Kibana}
+
+\subsection{Objetivo}
+
+Acceder a Kibana desde un navegador web externo.
+
+\subsection{Obtener IP pública}
+
+Entrar a:
+
+\begin{verbatim}
+Compute Engine -> VM instances
+\end{verbatim}
+
+Buscar la columna:
+
+\begin{verbatim}
+External IP
+\end{verbatim}
+
+\subsection{Abrir Kibana}
+
+Abrir en el navegador:
+
+\begin{verbatim}
+http://IP_PUBLICA_VM:5601
+\end{verbatim}
+
+No usar HTTPS.
+
+\subsection{Por qué HTTPS no funciona}
+
+Este laboratorio no configura TLS, certificados digitales, reverse proxy HTTPS ni terminación SSL. Kibana está escuchando únicamente por HTTP plano.
+
+Por tanto, usar:
+
+\begin{verbatim}
+https://IP_PUBLICA_VM:5601
+\end{verbatim}
+
+producirá errores de conexión, pantalla vacía o comportamiento inválido.
+
+\subsection{Credenciales iniciales}
+
+\begin{verbatim}
+Usuario: elastic
+Password: changeme
+\end{verbatim}
+
+Estas credenciales son inseguras y solo deben usarse en un laboratorio controlado.
+
+No debe exponerse Elasticsearch ni Kibana públicamente en Internet usando credenciales por defecto como \texttt{changeme}. En producción, esta práctica sería inaceptable.
+
+\section{Concepto básico: índice en Elasticsearch}
+
+Un índice en Elasticsearch es una colección lógica de documentos relacionados. Puede entenderse, de forma aproximada, como el lugar donde Elasticsearch almacena y organiza documentos JSON para permitir búsquedas y consultas.
+
+En este laboratorio se usará el índice:
+
+\begin{verbatim}
+test-index
+\end{verbatim}
+
+Los documentos insertados en ese índice serán posteriormente explorados desde Kibana mediante un Data View.
+
+\section{Inserción manual de documentos}
+
+\subsection{Objetivo}
+
+Insertar documentos manualmente en Elasticsearch para comprobar que el motor almacena e indexa información correctamente.
+
+\subsection{Insertar primer documento}
+
+Ejecutar:
+
+\begin{lstlisting}
+curl -u elastic:changeme -X PUT \
+"localhost:9200/test-index/_doc/1" \
+-H "Content-Type: application/json" \
+-d '{
+  "usuario": "test",
+  "evento": "primer documento",
+  "curso": "docker-elk",
+  "timestamp": "2026-05-23T23:30:00"
+}'
+\end{lstlisting}
+
+\subsection{Consultar documentos}
+
+Ejecutar:
+
+\begin{lstlisting}
+curl -u elastic:changeme \
+"localhost:9200/test-index/_search?pretty"
+\end{lstlisting}
+
+Si el documento aparece en esta consulta, Elasticsearch está almacenando datos correctamente aunque todavía no aparezcan en Discover.
+
+\section{Uso de Discover en Kibana}
+
+\subsection{Objetivo}
+
+Visualizar documentos desde la interfaz gráfica de Kibana.
+
+\subsection{Crear Data View}
+
+Entrar a:
+
+\begin{verbatim}
+Stack Management -> Data Views
+\end{verbatim}
+
+Configurar:
+
+\begin{verbatim}
+Name: test-index
+Index pattern: test-index
+Time field: timestamp
+\end{verbatim}
+
+\subsection{Por qué Kibana pide un campo temporal}
+
+Discover usa un filtro de tiempo para decidir qué documentos mostrar. El campo temporal permite ordenar y filtrar documentos según fecha y hora.
+
+En este laboratorio se usa:
+
+\begin{verbatim}
+timestamp
+\end{verbatim}
+
+porque los documentos insertados contienen ese campo.
+
+\subsection{Abrir Discover}
+
+Entrar a:
+
+\begin{verbatim}
+Analytics -> Discover
+\end{verbatim}
+
+Seleccionar el Data View:
+
+\begin{verbatim}
+test-index
+\end{verbatim}
+
+\section{Discover no es Elasticsearch}
+
+Es posible que Elasticsearch contenga documentos correctamente indexados y que Discover aparezca vacío.
+
+Esto ocurre porque Discover depende de:
+
+\begin{itemize}
+    \item el Data View seleccionado;
+    \item el campo temporal configurado;
+    \item el rango temporal activo;
+    \item los timestamps de los documentos.
+\end{itemize}
+
+Por tanto:
+
+\begin{itemize}
+    \item si la búsqueda REST muestra documentos, Elasticsearch funciona;
+    \item si Discover no muestra documentos, el problema puede estar en el filtro temporal;
+    \item Discover vacío no equivale automáticamente a Elasticsearch fallando.
+\end{itemize}
+
+\section{Problema común: documentos no visibles en Discover}
+
+\subsection{Causa}
+
+El problema normalmente ocurre porque el documento tiene un \texttt{timestamp} fuera del rango temporal seleccionado.
+
+Esto puede deberse a:
+
+\begin{itemize}
+    \item desfase entre UTC y hora local;
+    \item fecha futura;
+    \item fecha demasiado antigua;
+    \item filtro temporal restrictivo.
+\end{itemize}
+
+\subsection{Solución 1: ampliar rango temporal}
+
+En Discover, cambiar:
+
+\begin{verbatim}
+Last 15 minutes
+\end{verbatim}
+
+por:
+
+\begin{verbatim}
+Last 15 years
+\end{verbatim}
+
+Después presionar:
+
+\begin{verbatim}
+Refresh
+\end{verbatim}
+
+\subsection{Solución 2: insertar documento con hora UTC actual}
+
+Ejecutar:
+
+\begin{lstlisting}
+curl -u elastic:changeme -X POST \
+"localhost:9200/test-index/_doc/2?refresh=true" \
+-H "Content-Type: application/json" \
+-d '{
+  "usuario": "test",
+  "evento": "segundo documento con hora actual",
+  "curso": "docker-elk",
+  "timestamp": "'"$(date -u +"%Y-%m-%dT%H:%M:%SZ")"'"
+}'
+\end{lstlisting}
+
+\subsection{Por qué se usa refresh=true}
+
+El parámetro:
+
+\begin{verbatim}
+refresh=true
+\end{verbatim}
+
+fuerza a Elasticsearch a refrescar el índice inmediatamente después de insertar el documento.
+
+Sin este parámetro, Elasticsearch puede tardar unos segundos en hacer visible el documento para búsqueda. En un laboratorio, usar \texttt{refresh=true} evita confusión porque permite que el documento aparezca casi de inmediato en consultas y en Kibana.
+
+\section{Problemas comunes y troubleshooting}
+
+\subsection{ERR\_CONNECTION\_TIMED\_OUT}
+
+Causas probables:
+
+\begin{itemize}
+    \item regla de firewall inexistente;
+    \item network tag faltante;
+    \item puerto 5601 bloqueado;
+    \item Kibana todavía inicializando;
+    \item IP pública incorrecta.
+\end{itemize}
+
+\subsection{Contenedores en estado Exited}
+
+Revisar estado:
+
+\begin{lstlisting}
+docker compose ps
+docker ps -a
+\end{lstlisting}
+
+Revisar logs con Compose:
+
+\begin{lstlisting}
+docker compose logs
+\end{lstlisting}
+
+Revisar logs de un servicio específico:
+
+\begin{lstlisting}
+docker compose logs kibana
+docker compose logs elasticsearch
+docker compose logs logstash
+\end{lstlisting}
+
+También puede usarse Docker directamente:
+
+\begin{lstlisting}
+docker logs NOMBRE_CONTENEDOR
+\end{lstlisting}
+
+\subsection{docker: permission denied}
+
+Indica que el usuario actual no tiene permisos para usar Docker sin \texttt{sudo}.
+
+Ejecutar:
+
+\begin{lstlisting}
+sudo usermod -aG docker $USER
+newgrp docker
+\end{lstlisting}
+
+\subsection{401 security\_exception}
+
+No es un fallo. Indica que Elasticsearch está activo y protegido por autenticación.
+
+\subsection{Kibana no carga inmediatamente}
+
+Esperar varios minutos y revisar:
+
+\begin{lstlisting}
+docker compose ps
+docker compose logs kibana
+\end{lstlisting}
+
+\subsection{Discover vacío}
+
+Verificar:
+
+\begin{itemize}
+    \item índice correcto;
+    \item Data View correcto;
+    \item campo temporal correcto;
+    \item rango temporal seleccionado;
+    \item existencia de documentos mediante REST.
+\end{itemize}
+
+\section{Apagado correcto del entorno}
+
+\subsection{Objetivo}
+
+Apagar contenedores y VM para evitar consumo innecesario de recursos cloud.
+
+\subsection{Detener contenedores}
+
+Desde el directorio:
+
+\begin{verbatim}
+~/downloads/gits/docker-elk
+\end{verbatim}
+
+ejecutar:
+
+\begin{lstlisting}
+docker compose down
+\end{lstlisting}
+
+\subsection{Detener VM}
+
+Entrar a:
+
+\begin{verbatim}
+Compute Engine -> VM instances
+\end{verbatim}
+
+Seleccionar la VM y presionar:
+
+\begin{verbatim}
+Stop
+\end{verbatim}
+
+Esperar hasta que el estado sea:
+
+\begin{verbatim}
+Terminated
+\end{verbatim}
+
+\section{Resultado esperado final}
+
+Al finalizar correctamente el laboratorio, el estudiante deberá ser capaz de desplegar servicios distribuidos mediante Docker, validar servicios HTTP, configurar reglas de firewall cloud, diferenciar acceso local y externo, insertar documentos en Elasticsearch, visualizar información desde Kibana y distinguir comportamientos normales de fallos reales.
+
+\section{Bibliografía}
+
+\begin{thebibliography}{9}
+
+\bibitem{docker-elk}
+deviantony.
+\textit{Elastic stack (ELK) on Docker}.
+Repositorio docker-elk en GitHub.
+Disponible en: \url{https://github.com/deviantony/docker-elk}.
+El proyecto permite ejecutar la versión más reciente de Elastic Stack mediante Docker y Docker Compose, utilizando imágenes oficiales de Elasticsearch, Logstash y Kibana. También documenta variantes como TLS y el comportamiento de las funciones Platinum durante el periodo de prueba de 30 días.
+
+\end{thebibliography}
+
+\end{document}

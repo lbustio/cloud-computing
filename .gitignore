@@ -19,3 +19,10 @@ Desktop.ini
 
 # Folders
 build/
+__trash__/
+
+# Grabaciones
+*.mp4
+
+# Datos académicos sensibles
+AlumnosInscritosAsignatura.pdf
