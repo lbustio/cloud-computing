@@ -129,124 +129,159 @@ A continuación se presenta el cronograma tentativo del curso. Este cronograma e
 \hline
 \endfoot
 
-1 & 11/05 &
-\textbf{Introduccion al curso}
-\begin{itemize}
-\item Presentacion del curso.
-\item Explicacion de los temas.
-\item Presentacion de la plataforma a emplear en el curso.
-\end{itemize}
+1 & 11/05 & \textbf{Introduccion al curso}
+            \begin{itemize}
+              \item Presentacion del curso.
+              \item Explicacion de los temas.
+              \item Presentacion de la plataforma a emplear en el curso.
+            \end{itemize}
 &
-\textbf{Practica}
+\textbf{Tarea}
 \begin{itemize}
-\item Crear una cuenta de usuario en Google Cloud Platform.
-\item Revisar los videos introductorios [1], [2] y [3].
+  \item Crear una cuenta de usuario en Google Cloud Platform.
+  \item Revisar los videos introductorios [1], [2] y [3].
 \end{itemize}
 \\
 \hline
 
-2 & 15/05 &
-\textbf{Cloud computing con GCP}
-\begin{itemize}
-\item Enfoque practico, trabajo incremental, documentacion y reglas.
-\item GCP como plataforma del curso.
-\item Cloud computing, modelo cloud, IaaS, PaaS y SaaS.
-\item Modelos de despliegue: nube publica, privada, hibrida y multi-cloud.
-\item Proyectos, Compute Engine y VM Debian.
-\item Regiones, zonas, VPC, firewall e IP publica/privada.
-\item SSH a instancias Linux.
-\item Costos, billing y buenas practicas de ahorro.
-\item Normativas y compliance: GDPR, ISO 27017 e ISO 27018.
-\item Riesgos y troubleshooting de VM, SSH, firewall y web.
-\item Almacenamiento cloud con buckets.
-\end{itemize}
+2 & 15/05 & \textbf{Cloud computing con GCP}
+            \begin{itemize}
+              \item Enfoque practico, trabajo incremental, documentacion y reglas.
+              \item GCP como plataforma del curso.
+              \item Cloud computing, modelo cloud, IaaS, PaaS y SaaS.
+              \item Modelos de despliegue: nube publica, privada, hibrida y multi-cloud.
+              \item Proyectos, Compute Engine y VM Debian.
+              \item Regiones, zonas, VPC, firewall e IP publica/privada.
+              \item SSH a instancias Linux.
+              \item Costos, billing y buenas practicas de ahorro.
+              \item Normativas y compliance: GDPR, ISO 27017 e ISO 27018.
+              \item Riesgos y troubleshooting de VM, SSH, firewall y web.
+              \item Almacenamiento cloud con buckets.
+            \end{itemize}
 &
-\textbf{Practica}
-\begin{itemize}
-\item Revisar el material de estudio de la sesion.
-\item Crear cuenta/proyecto en GCP.
-\item Desplegar una VM Debian 12 con configuracion minima definida.
-\item Documentar region, zona, costo y buenas practicas de ahorro.
-\item Conectarse por SSH e inspeccionar SO, CPU, memoria y disco.
-\item Instalar herramientas complementarias: \texttt{htop} y \texttt{mc}.
-\item Configurar reglas de firewall HTTP.
-\item Instalar Nginx.
-\item Verificar Nginx desde la VM y desde navegador externo.
-\item Crear bucket en Cloud Storage y subir archivo de prueba.
-\item Entregar reporte con evidencias, diagrama, costos, riesgos, compliance, troubleshooting y reflexion.
-\end{itemize}
+\textbf{Tarea}
+  \begin{itemize}
+    \item Revisar el material de estudio de la sesion.
+    \item Crear cuenta/proyecto en GCP.
+    \item Desplegar una VM Debian 12 con configuracion minima definida.
+    \item Documentar region, zona, costo y buenas practicas de ahorro.
+    \item Conectarse por SSH e inspeccionar SO, CPU, memoria y disco.
+    \item Instalar herramientas complementarias: \texttt{htop} y \texttt{mc}.
+    \item Configurar reglas de firewall HTTP.
+    \item Instalar Nginx.
+    \item Verificar Nginx desde la VM y desde navegador externo.
+    \item Crear bucket en Cloud Storage y subir archivo de prueba.
+    \item Entregar reporte con evidencias, diagrama, costos, riesgos, compliance, troubleshooting y reflexion.
+  \end{itemize}
 \\
 \hline
-3  & 18/05 &
-\textbf{Pipelines de observabilidad con ELK Stack}
-\begin{itemize}
-\item Introduccion a pipelines modernos de datos: ingestion, indexacion, busqueda y visualizacion.
-\item Elasticsearch: indices, documentos, mappings, consultas y API REST.
-\item Kibana: dashboards, filtros, visualizaciones y exploracion de eventos.
-\item JSON, \texttt{curl} y scripts de ingestion.
-\item Logs, metricas, eventos, telemetria, monitoreo y relacion con ciberseguridad.
-\item Casos de uso: busqueda de eventos, deteccion de actividad sospechosa y analisis temporal.
-\end{itemize}
+3  & 18/05 & \textbf{Clase práctica: Infraestructura Cloud en GCP}
+            \begin{itemize}
+              \item Espacio de trabajo para completar la practica asignada en la sesion anterior...
+              \item Revision de objetivos tecnicos: proyecto en GCP, VM Debian, acceso SSH, reglas de firewall, Nginx y bucket de Cloud Storage.
+              \item Verificacion de evidencias minimas: capturas, comandos ejecutados, configuraciones, pruebas de acceso y resultados observados.
+              \item Identificacion y documentacion de problemas tecnicos: errores de SSH, firewall, permisos, servicios, costos y disponibilidad.
+              \item Discusion de buenas practicas de seguridad, ahorro de costos y limpieza de recursos.
+              \item Preparacion del reporte tecnico individual.
+            \end{itemize}
 &
-\textbf{Trabajo en clase}
-\begin{itemize}
-\item Revisar el material de la carpeta \texttt{02.- ELK Stack}.
-\item Analizar la arquitectura general de un pipeline ELK.
-\item Identificar componentes, puertos, flujo de datos y requisitos de la VM.
-\item Revisar ejemplos de documentos JSON y consultas REST.
-\item Preparar dudas tecnicas para la instalacion de la sesion 4.
-\item Sin tarea entregable en esta sesion.
-\end{itemize}
+  \textbf{Tarea}
+  \begin{itemize}
+    \item Completar o corregir la practica iniciada en la sesion anterior.
+    \item Validar que la VM sea accesible por SSH y que Nginx responda desde navegador externo.
+    \item Confirmar la existencia del bucket y la carga de un archivo de prueba.
+    \item Registrar comandos relevantes, decisiones tecnicas y problemas encontrados.
+    \item Incluir evidencias de funcionamiento, costos estimados, riesgos y reflexion final.
+    \item Crear un reporte en PDF que describa la práctica, docuemntando los procesos y resultados.
+  \end{itemize}
 \\
 \hline
-4  & 22/05 &
-\textbf{Instalacion de ELK Stack}
-\begin{itemize}
-\item Preparacion de la VM Linux en GCP.
-\item Requisitos de sistema, memoria, servicios y paquetes.
-\item Instalacion de Elasticsearch.
-\item Instalacion de Kibana.
-\item Configuracion de puertos, firewall y acceso remoto.
-\item Verificacion inicial de servicios.
-\item Troubleshooting de instalacion.
-\end{itemize}
+4  & 22/05 & \textbf{ELK Stack}
+  \begin{itemize}
+    \item Introduccion a pipelines modernos de datos: ingestion, indexacion, busqueda y visualizacion.
+    \item Elasticsearch: indices, documentos, mappings, consultas y API REST.
+    \item Kibana: dashboards, filtros, visualizaciones y exploracion de eventos.
+    \item JSON, \texttt{curl} y scripts de ingestion.
+    \item Logs, metricas, eventos, telemetria, monitoreo y relacion con ciberseguridad.
+    \item Casos de uso: busqueda de eventos, deteccion de actividad sospechosa y analisis temporal.
+  \end{itemize}
 &
-\textbf{Practica guiada}
-\begin{itemize}
-\item Preparar o reutilizar una VM Linux en GCP.
-\item Instalar Elasticsearch.
-\item Instalar Kibana.
-\item Validar estado de los servicios.
-\item Documentar comandos, configuraciones y errores encontrados.
-\item Dejar la VM preparada para la implementacion de la sesion 5.
-\end{itemize}
+\textbf{Tarea}
+  \begin{itemize}
+      \item Revisar el material de la clase.
+      \item Analizar la arquitectura general de un pipeline ELK.
+      \item Identificar componentes, puertos, flujo de datos y requisitos de la VM.
+      \item Revisar ejemplos de documentos JSON y consultas REST.
+      \item Preparar dudas tecnicas de la siguiente sesión.
+      \item Sin tarea entregable en esta sesion.
+  \end{itemize}
 \\
 \hline
-5  & 25/05 &
-\textbf{Implementacion de ELK Stack}
-\begin{itemize}
-\item Puesta en marcha del pipeline de eventos.
-\item Ingestion de eventos o logs en formato JSON.
-\item Indexacion y validacion de documentos en Elasticsearch.
-\item Consultas basicas mediante API REST.
-\item Visualizacion de datos en Kibana.
-\item Construccion de dashboards iniciales.
-\item Analisis de eventos y patrones observados.
-\end{itemize}
+5  & 25/05 & \textbf{Instalacion de ELK Stack}
+  \begin{itemize}
+    \item Preparacion de la VM Linux en GCP.
+    \item Requisitos de sistema, memoria, servicios y paquetes.
+    \item Instalacion de Elasticsearch.
+    \item Instalacion de Kibana.
+    \item Configuracion de puertos, firewall y acceso remoto.
+    \item Verificacion inicial de servicios.
+    \item Troubleshooting de instalacion.
+  \end{itemize}
 &
-\textbf{Practica}
-\begin{itemize}
-\item Indexar un dataset de eventos o logs en formato JSON.
-\item Realizar consultas basicas mediante API REST.
-\item Construir visualizaciones y un dashboard inicial en Kibana.
-\item Analizar eventos relevantes del dataset.
-\item Entregar reporte con arquitectura, dataset, consultas, dashboard, problemas encontrados, soluciones y evidencias.
-\end{itemize}
+\textbf{Tarea}
+  \begin{itemize}
+    \item Preparar o reutilizar una VM Linux en GCP.
+    \item Instalar Elasticsearch.
+    \item Instalar Kibana.
+    \item Validar estado de los servicios.
+    \item Documentar comandos, configuraciones y errores encontrados.
+    \item Dejar la VM preparada para la implementacion de la sesion 6.
+  \end{itemize}
 \\
 \hline
-6  & 29/05 & & \\
+6  & 29/05 & \textbf{Detección de Ataques de Fuerza Bruta mediante Análisis Estructurado de Logs en Kibana}
+  \begin{itemize}
+    \item Puesta en marcha del pipeline de eventos.
+    \item Ingestion de eventos o logs en formato JSON.
+    \item Indexacion y validacion de documentos en Elasticsearch.
+    \item Consultas basicas mediante API REST.
+    \item Visualizacion de datos en Kibana.
+    \item Construccion de dashboards iniciales.
+    \item Analisis de eventos y patrones observados.
+  \end{itemize}
+&
+\textbf{Tarea}
+  \begin{itemize}
+    \item Indexar un dataset de eventos o logs en formato JSON.
+    \item Realizar consultas basicas mediante API REST.
+    \item Construir visualizaciones y un dashboard inicial en Kibana.
+    \item Analizar eventos relevantes del dataset.
+    \item Entregar un reporte donde se describa la arquitectura desarrollada, dataset, consultas, dashboard, problemas encontrados, soluciones y evidencias.
+  \end{itemize}
+\\
 \hline
-7  & 01/06 & & \\
+7  & 01/06 & \textbf{Clase práctica: Detección de Ataques de Fuerza Bruta mediante Análisis Estructurado de Logs en Kibana}
+  \begin{itemize}
+    \item Sesion de trabajo para consolidar lo realizado en las sesiones del 25/05 y 29/05.
+    \item Verificacion de la VM, recursos disponibles, puertos, reglas de firewall y acceso a servicios.
+    \item Revision del estado de Elasticsearch y Kibana.
+    \item Correccion de errores de instalacion, configuracion, memoria, permisos, conectividad y servicios.
+    \item Integracion del flujo completo: ingestion de datos, creacion de indices, consultas REST y visualizacion en Kibana.
+    \item Validacion de evidencias tecnicas para documentar el funcionamiento del pipeline.
+    \item Cierre integrado de los modulos 1, 2 y 3: infraestructura cloud, pipelines ELK y analisis de seguridad con telemetria.
+  \end{itemize}
+&
+\textbf{Tarea}
+  \begin{itemize}
+    \item Completar la instalacion funcional de Elasticsearch y Kibana.
+    \item Ejecutar la ingestion de eventos o logs en formato JSON.
+    \item Validar indices, documentos y consultas basicas en Elasticsearch.
+    \item Construir o mejorar visualizaciones y dashboard en Kibana.
+    \item Documentar problemas encontrados, soluciones aplicadas, riesgos, costos y decisiones tecnicas.
+    \item Entregar un reporte en PDF con la descripcion, definición e implementación de la arquitectura, procedimiento, evidencias, consultas, dashboard, analisis de resultados y reflexion final.
+    \item El reporte funciona como evidencia de cierre de los modulos 1, 2 y 3.
+  \end{itemize}
+\\
 \hline
 8  & 05/06 & & \\
 \hline
