@@ -11,10 +11,10 @@ Repositorio oficial de trabajo para el curso "Computo nube y tecnologias emergen
 
 ## Acceso rápido
 
-- [Temario general](00.-documentos%20del%20curso/00.-temario%20general.md)
-- [Sesión 1](01.-modulo%201/01.-introduccion%20al%20curso.md)
-- [Módulo 1](01.-modulo%201/00.-temario%20modulo%201.md)
-- [Módulo 2](02.-modulo%202/00.-temario%20modulo%202.md)
+- [Temario general](00.-%20Documentos%20del%20curso/00.-temario%20general.md)
+- [Sesión 1](01.-%20Modulo%201%20-%20Introduccion%20a%20Google%20Cloud%20Platform/01.-%20Introducci%C3%B3n%20al%20curso/01.-introduccion%20al%20curso.md)
+- [Módulo 1](01.-%20Modulo%201%20-%20Introduccion%20a%20Google%20Cloud%20Platform/00.-temario%20modulo%201.md)
+- [Módulo 2](02.-M%C3%B3dulo%202%20-%20Pipelines%20Distribuidos,%20Observabilidad%20y%20An%C3%A1lisis%20de%20Eventos%20en%20Cloud/00.-temario%20modulo%202.md)
 - [Módulo 3](03.-modulo%203/03.-temario%20modulo%203.md)
 - [Módulo 4](04.-modulo%204/04.-temario%20modulo%204.md)
 - [Módulo 5](05.-modulo%205/05.-temario%20modulo%205.md)
@@ -38,14 +38,14 @@ Al finalizar, deberias poder:
 
 ## 2) Estructura del repositorio
 
-- [00.-documentos del curso](00.-documentos%20del%20curso/)
-  - [00.-temario general.md](00.-documentos%20del%20curso/00.-temario%20general.md)
-  - [MSO6017 Cómputo nube y tecnologías emergentes.docx](00.-documentos%20del%20curso/MSO6017%20C%C3%B3mputo%20nube%20y%20tecnolog%C3%ADas%20emergentes.docx)
-- [01.-modulo 1](01.-modulo%201/)
-  - [00.-temario modulo 1.md](01.-modulo%201/00.-temario%20modulo%201.md)
-  - [01.-introduccion al curso.md](01.-modulo%201/01.-introduccion%20al%20curso.md)
-- [02.-modulo 2](02.-modulo%202/)
-  - [00.-temario modulo 2.md](02.-modulo%202/00.-temario%20modulo%202.md)
+- [00.- Documentos del curso](00.-%20Documentos%20del%20curso/)
+  - [00.-temario general.md](00.-%20Documentos%20del%20curso/00.-temario%20general.md)
+  - [MSO6017 Cómputo nube y tecnologías emergentes.docx](00.-%20Documentos%20del%20curso/MSO6017%20C%C3%B3mputo%20nube%20y%20tecnolog%C3%ADas%20emergentes.docx)
+- [01.- Modulo 1 - Introduccion a Google Cloud Platform](01.-%20Modulo%201%20-%20Introduccion%20a%20Google%20Cloud%20Platform/)
+  - [00.-temario modulo 1.md](01.-%20Modulo%201%20-%20Introduccion%20a%20Google%20Cloud%20Platform/00.-temario%20modulo%201.md)
+  - [01.-introduccion al curso.md](01.-%20Modulo%201%20-%20Introduccion%20a%20Google%20Cloud%20Platform/01.-%20Introducci%C3%B3n%20al%20curso/01.-introduccion%20al%20curso.md)
+- [02.-Módulo 2 - Pipelines Distribuidos, Observabilidad y Análisis de Eventos en Cloud](02.-M%C3%B3dulo%202%20-%20Pipelines%20Distribuidos,%20Observabilidad%20y%20An%C3%A1lisis%20de%20Eventos%20en%20Cloud/)
+  - [00.-temario modulo 2.md](02.-M%C3%B3dulo%202%20-%20Pipelines%20Distribuidos,%20Observabilidad%20y%20An%C3%A1lisis%20de%20Eventos%20en%20Cloud/00.-temario%20modulo%202.md)
 - [03.-modulo 3](03.-modulo%203/)
   - [03.-temario modulo 3.md](03.-modulo%203/03.-temario%20modulo%203.md)
 - [04.-modulo 4](04.-modulo%204/)
