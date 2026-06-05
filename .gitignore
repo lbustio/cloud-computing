@@ -1,28 +1,67 @@
 # Sistema operativo
 Thumbs.db
+ehthumbs.db
 Desktop.ini
 .DS_Store
+.Spotlight-V100/
+.Trashes/
 
 # Temporales de Office
 ~$*
+*.wbk
 
-# Logs y temporales
+# Editores y configuracion local
+.vscode/
+.idea/
+.history/
+
+# Logs y temporales generales
 *.log
 *.tmp
 *.temp
+
+# LaTeX
 *.aux
+*.bbl
+*.bcf
+*.blg
+*.fdb_latexmk
+*.fls
+*.lof
+*.lot
+*.nav
 *.out
+*.run.xml
+*.snm
 *.synctex.gz
+*.toc
+*.vrb
+*.xdv
 
-# VS Code (historial local)
-.history/
+# Python
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.venv/
+venv/
+env/
+.env
+.env.*
+!.env.example
 
-# Folders
+# Carpetas generadas o locales
 build/
 __trash__/
 
-# Grabaciones
+# Grabaciones y videos locales
 *.mp4
+*.mov
+*.mkv
+*.avi
+*.webm
 
 # Datos académicos sensibles
 AlumnosInscritosAsignatura.pdf
+AlumnosInscritosAsignatura*.pdf

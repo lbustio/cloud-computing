@@ -12,11 +12,11 @@ Repositorio oficial de trabajo para el curso "Computo nube y tecnologias emergen
 ## Acceso rápido
 
 - [Temario general](00.-%20Documentos%20del%20curso/00.-temario%20general.md)
-- [Sesión 1](01.-%20Modulo%201%20-%20Introduccion%20a%20Google%20Cloud%20Platform/01.-%20Introducci%C3%B3n%20al%20curso/01.-introduccion%20al%20curso.md)
-- [Módulo 1](01.-%20Modulo%201%20-%20Introduccion%20a%20Google%20Cloud%20Platform/00.-temario%20modulo%201.md)
-- [Módulo 2](02.-M%C3%B3dulo%202%20-%20Pipelines%20Distribuidos,%20Observabilidad%20y%20An%C3%A1lisis%20de%20Eventos%20en%20Cloud/00.-temario%20modulo%202.md)
-- [Módulo 3](03.-modulo%203/03.-temario%20modulo%203.md)
-- [Módulo 4](04.-modulo%204/04.-temario%20modulo%204.md)
+- [Sesión 1](01.-Modulo%201%20-%20Introduccion%20a%20Google%20Cloud%20Platform/01.-%20Introducci%C3%B3n%20al%20curso/01.-introduccion%20al%20curso.md)
+- [Módulo 1](01.-Modulo%201%20-%20Introduccion%20a%20Google%20Cloud%20Platform/00.-temario%20modulo%201.md)
+- [Módulo 2](02.-M%C3%B3dulo%202%20-%20Pipelines%20distribuidos,%20observabilidad%20y%20an%C3%A1lisis%20de%20eventos%20en%20cloud/00.-temario%20modulo%202.md)
+- [Módulo 3](03.-M%C3%B3dulo%203%20-%20Telemetr%C3%ADa,%20monitoreo%20y%20an%C3%A1lisis%20de%20seguridad%20en%20infraestructura%20cloud/00.-temario%20modulo%203.md)
+- [Módulo 4](04.-M%C3%B3dulo%204%20-%20IA%20y%20ML%20aplicados%20en%20cloud/00.-temario%20modulo%204.md)
 - [Módulo 5](05.-modulo%205/05.-temario%20modulo%205.md)
 
 ## Profesor del curso
@@ -40,16 +40,16 @@ Al finalizar, deberias poder:
 
 - [00.- Documentos del curso](00.-%20Documentos%20del%20curso/)
   - [00.-temario general.md](00.-%20Documentos%20del%20curso/00.-temario%20general.md)
-  - [MSO6017 Cómputo nube y tecnologías emergentes.docx](00.-%20Documentos%20del%20curso/MSO6017%20C%C3%B3mputo%20nube%20y%20tecnolog%C3%ADas%20emergentes.docx)
-- [01.- Modulo 1 - Introduccion a Google Cloud Platform](01.-%20Modulo%201%20-%20Introduccion%20a%20Google%20Cloud%20Platform/)
-  - [00.-temario modulo 1.md](01.-%20Modulo%201%20-%20Introduccion%20a%20Google%20Cloud%20Platform/00.-temario%20modulo%201.md)
-  - [01.-introduccion al curso.md](01.-%20Modulo%201%20-%20Introduccion%20a%20Google%20Cloud%20Platform/01.-%20Introducci%C3%B3n%20al%20curso/01.-introduccion%20al%20curso.md)
-- [02.-Módulo 2 - Pipelines Distribuidos, Observabilidad y Análisis de Eventos en Cloud](02.-M%C3%B3dulo%202%20-%20Pipelines%20Distribuidos,%20Observabilidad%20y%20An%C3%A1lisis%20de%20Eventos%20en%20Cloud/)
-  - [00.-temario modulo 2.md](02.-M%C3%B3dulo%202%20-%20Pipelines%20Distribuidos,%20Observabilidad%20y%20An%C3%A1lisis%20de%20Eventos%20en%20Cloud/00.-temario%20modulo%202.md)
-- [03.-modulo 3](03.-modulo%203/)
-  - [03.-temario modulo 3.md](03.-modulo%203/03.-temario%20modulo%203.md)
-- [04.-modulo 4](04.-modulo%204/)
-  - [04.-temario modulo 4.md](04.-modulo%204/04.-temario%20modulo%204.md)
+  - [MSO6017 Cómputo nube y tecnologías emergentes.docx](00.-%20Documentos%20del%20curso/01.-burocr%C3%A1ticos/MSO6017%20C%C3%B3mputo%20nube%20y%20tecnolog%C3%ADas%20emergentes.docx)
+- [01.-Modulo 1 - Introduccion a Google Cloud Platform](01.-Modulo%201%20-%20Introduccion%20a%20Google%20Cloud%20Platform/)
+  - [00.-temario modulo 1.md](01.-Modulo%201%20-%20Introduccion%20a%20Google%20Cloud%20Platform/00.-temario%20modulo%201.md)
+  - [01.-introduccion al curso.md](01.-Modulo%201%20-%20Introduccion%20a%20Google%20Cloud%20Platform/01.-%20Introducci%C3%B3n%20al%20curso/01.-introduccion%20al%20curso.md)
+- [02.-Módulo 2 - Pipelines distribuidos, observabilidad y análisis de eventos en cloud](02.-M%C3%B3dulo%202%20-%20Pipelines%20distribuidos,%20observabilidad%20y%20an%C3%A1lisis%20de%20eventos%20en%20cloud/)
+  - [00.-temario modulo 2.md](02.-M%C3%B3dulo%202%20-%20Pipelines%20distribuidos,%20observabilidad%20y%20an%C3%A1lisis%20de%20eventos%20en%20cloud/00.-temario%20modulo%202.md)
+- [03.-Módulo 3 - Telemetría, monitoreo y análisis de seguridad en infraestructura cloud](03.-M%C3%B3dulo%203%20-%20Telemetr%C3%ADa,%20monitoreo%20y%20an%C3%A1lisis%20de%20seguridad%20en%20infraestructura%20cloud/)
+  - [00.-temario modulo 3.md](03.-M%C3%B3dulo%203%20-%20Telemetr%C3%ADa,%20monitoreo%20y%20an%C3%A1lisis%20de%20seguridad%20en%20infraestructura%20cloud/00.-temario%20modulo%203.md)
+- [04.-Módulo 4 - IA y ML aplicados en cloud](04.-M%C3%B3dulo%204%20-%20IA%20y%20ML%20aplicados%20en%20cloud/)
+  - [00.-temario modulo 4.md](04.-M%C3%B3dulo%204%20-%20IA%20y%20ML%20aplicados%20en%20cloud/00.-temario%20modulo%204.md)
 - [05.-modulo 5](05.-modulo%205/)
   - [05.-temario modulo 5.md](05.-modulo%205/05.-temario%20modulo%205.md)
 
