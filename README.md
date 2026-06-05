@@ -1,185 +1,163 @@
-# Computo nube y tecnologias emergentes
+# Cómputo nube y tecnologías emergentes
 
-Repositorio oficial de trabajo para el curso "Computo nube y tecnologias emergentes" de la Maestría en Ciencias en Tecnologías de Seguridad, del Instituto Nacional de Astrofísica, Óptica y Electrónica (INAOE). Aqui vas a encontrar la estructura por modulos, materiales de referencia y la ruta de trabajo para avanzar semana a semana.
+Repositorio de trabajo del curso **Cómputo nube y tecnologías emergentes** para la Maestría en Ciencias en Tecnologías de Seguridad del Instituto Nacional de Astrofísica, Óptica y Electrónica (INAOE).
 
-## Información general
+El repositorio organiza el material por módulos, sesiones prácticas, tareas, documentos administrativos y bibliografía. La ruta del curso avanza desde infraestructura cloud básica en Google Cloud Platform hasta observabilidad, análisis de seguridad, IA/ML en cloud y tecnologías descentralizadas.
+
+## Información General
 
 - Clave: MSO6017
 - Programa: Maestría en Ciencias en Tecnologías de Seguridad
 - Institución: INAOE
-- Modalidad de trabajo: práctica guiada con infraestructura cloud real
+- Profesor: Lázaro Bustio Martínez, PhD
+- Email: lbustio@inaoe.mx
+- Modalidad: práctica guiada con infraestructura cloud real
 
-## Acceso rápido
+## Acceso Rápido
 
-- [Temario general](00.-%20Documentos%20del%20curso/00.-temario%20general.md)
-- [Sesión 1](01.-Modulo%201%20-%20Introduccion%20a%20Google%20Cloud%20Platform/01.-%20Introducci%C3%B3n%20al%20curso/01.-introduccion%20al%20curso.md)
-- [Módulo 1](01.-Modulo%201%20-%20Introduccion%20a%20Google%20Cloud%20Platform/00.-temario%20modulo%201.md)
-- [Módulo 2](02.-M%C3%B3dulo%202%20-%20Pipelines%20distribuidos,%20observabilidad%20y%20an%C3%A1lisis%20de%20eventos%20en%20cloud/00.-temario%20modulo%202.md)
-- [Módulo 3](03.-M%C3%B3dulo%203%20-%20Telemetr%C3%ADa,%20monitoreo%20y%20an%C3%A1lisis%20de%20seguridad%20en%20infraestructura%20cloud/00.-temario%20modulo%203.md)
-- [Módulo 4](04.-M%C3%B3dulo%204%20-%20IA%20y%20ML%20aplicados%20en%20cloud/00.-temario%20modulo%204.md)
-- [Módulo 5](05.-modulo%205/05.-temario%20modulo%205.md)
+- [Temario general](<00.- Documentos del curso/00.-temario general.md>)
+- [Guía del curso en LaTeX](<00.- Documentos del curso/00.- guia_curso/00.-guia_curso.tex>)
+- [Documento oficial del curso](<00.- Documentos del curso/01.-burocráticos/MSO6017 Cómputo nube y tecnologías emergentes.docx>)
+- [Calendario 2026](<00.- Documentos del curso/01.-burocráticos/Calendario_2026.pdf>)
+- [Módulo 1](<01.-Modulo 1 - Introduccion a Google Cloud Platform/00.-temario modulo 1.md>)
+- [Módulo 2](<02.-Módulo 2 - Pipelines distribuidos, observabilidad y análisis de eventos en cloud/00.-temario modulo 2.md>)
+- [Módulo 3](<03.-Módulo 3 - Telemetría, monitoreo y análisis de seguridad en infraestructura cloud/00.-temario modulo 3.md>)
+- [Módulo 4](<04.-Módulo 4 - IA y ML aplicados en cloud/00.-temario modulo 4.md>)
+- [Módulo 5](<05.-modulo 5/05.-temario modulo 5.md>)
+- [Bibliografía](<06.-Bibliografía/>)
 
-## Profesor del curso
+## Ruta Del Curso
 
-- Lazaro Bustio Martinez, PhD
-- Email: lbustio@inaoemx
+1. Módulo 1: fundamentos de cloud computing e infraestructura base en GCP.
+2. Módulo 2: pipelines de eventos, Elasticsearch, Kibana y observabilidad.
+3. Módulo 3: telemetría, monitoreo y análisis de seguridad.
+4. Módulo 4: IA/ML aplicados en cloud.
+5. Módulo 5: blockchain y tecnologías descentralizadas.
 
-## 1) Proposito del curso
+Los módulos están conectados: la infraestructura desplegada en una etapa se reutiliza y amplía en las siguientes.
 
-Este curso esta orientado a practica real sobre infraestructura cloud. La idea central no es memorizar definiciones, sino construir, probar, romper, corregir y documentar soluciones tecnicas.
+## Estructura Del Repositorio
 
-Al finalizar, deberias poder:
+```text
+.
+├── 00.- Documentos del curso/
+│   ├── 00.- guia_curso/
+│   ├── 00.-temario general.md
+│   └── 01.-burocráticos/
+├── 01.-Modulo 1 - Introduccion a Google Cloud Platform/
+├── 02.-Módulo 2 - Pipelines distribuidos, observabilidad y análisis de eventos en cloud/
+├── 03.-Módulo 3 - Telemetría, monitoreo y análisis de seguridad en infraestructura cloud/
+├── 04.-Módulo 4 - IA y ML aplicados en cloud/
+├── 05.-modulo 5/
+├── 06.-Bibliografía/
+├── lbustio_lecture_notes.cls
+└── README.md
+```
 
-- Desplegar infraestructura en Google Cloud Platform (GCP).
-- Construir pipelines de observabilidad con Elasticsearch y Kibana.
-- Analizar telemetria y eventos de seguridad.
-- Aplicar servicios de IA/ML en cloud para analisis de eventos.
-- Entender fundamentos de blockchain mediante un despliegue educativo.
+## Material Por Módulo
 
-## 2) Estructura del repositorio
+### Módulo 1. Introducción a Google Cloud Platform
 
-- [00.- Documentos del curso](00.-%20Documentos%20del%20curso/)
-  - [00.-temario general.md](00.-%20Documentos%20del%20curso/00.-temario%20general.md)
-  - [MSO6017 Cómputo nube y tecnologías emergentes.docx](00.-%20Documentos%20del%20curso/01.-burocr%C3%A1ticos/MSO6017%20C%C3%B3mputo%20nube%20y%20tecnolog%C3%ADas%20emergentes.docx)
-- [01.-Modulo 1 - Introduccion a Google Cloud Platform](01.-Modulo%201%20-%20Introduccion%20a%20Google%20Cloud%20Platform/)
-  - [00.-temario modulo 1.md](01.-Modulo%201%20-%20Introduccion%20a%20Google%20Cloud%20Platform/00.-temario%20modulo%201.md)
-  - [01.-introduccion al curso.md](01.-Modulo%201%20-%20Introduccion%20a%20Google%20Cloud%20Platform/01.-%20Introducci%C3%B3n%20al%20curso/01.-introduccion%20al%20curso.md)
-- [02.-Módulo 2 - Pipelines distribuidos, observabilidad y análisis de eventos en cloud](02.-M%C3%B3dulo%202%20-%20Pipelines%20distribuidos,%20observabilidad%20y%20an%C3%A1lisis%20de%20eventos%20en%20cloud/)
-  - [00.-temario modulo 2.md](02.-M%C3%B3dulo%202%20-%20Pipelines%20distribuidos,%20observabilidad%20y%20an%C3%A1lisis%20de%20eventos%20en%20cloud/00.-temario%20modulo%202.md)
-- [03.-Módulo 3 - Telemetría, monitoreo y análisis de seguridad en infraestructura cloud](03.-M%C3%B3dulo%203%20-%20Telemetr%C3%ADa,%20monitoreo%20y%20an%C3%A1lisis%20de%20seguridad%20en%20infraestructura%20cloud/)
-  - [00.-temario modulo 3.md](03.-M%C3%B3dulo%203%20-%20Telemetr%C3%ADa,%20monitoreo%20y%20an%C3%A1lisis%20de%20seguridad%20en%20infraestructura%20cloud/00.-temario%20modulo%203.md)
-- [04.-Módulo 4 - IA y ML aplicados en cloud](04.-M%C3%B3dulo%204%20-%20IA%20y%20ML%20aplicados%20en%20cloud/)
-  - [00.-temario modulo 4.md](04.-M%C3%B3dulo%204%20-%20IA%20y%20ML%20aplicados%20en%20cloud/00.-temario%20modulo%204.md)
-- [05.-modulo 5](05.-modulo%205/)
-  - [05.-temario modulo 5.md](05.-modulo%205/05.-temario%20modulo%205.md)
+- [Temario del módulo](<01.-Modulo 1 - Introduccion a Google Cloud Platform/00.-temario modulo 1.md>)
+- [Sesión 1. Introducción al curso](<01.-Modulo 1 - Introduccion a Google Cloud Platform/01.- Introducción al curso/01.-introduccion al curso.md>)
+- [Tarea 1. Comparación entre servicios cloud](<01.-Modulo 1 - Introduccion a Google Cloud Platform/01.- Introducción al curso/01.- Tarea 1 - Comparación entre servicios cloud/01.-tarea1.tex>)
+- [Clase 2. Cloud computing con GCP](<01.-Modulo 1 - Introduccion a Google Cloud Platform/02.- Cloud computing con GCP/02.- Cloud computing con GCP.pdf>)
+- [Tarea 2. Creación de infraestructura básica](<01.-Modulo 1 - Introduccion a Google Cloud Platform/02.- Cloud computing con GCP/02.- Tarea 2 - Creación de la infraestructura básica/02.- Tarea 2 - Creación de la infraestructura básica.tex>)
+- [Clase práctica. Infraestructura Cloud en GCP](<01.-Modulo 1 - Introduccion a Google Cloud Platform/03.- Clase práctica - Infraestructura Cloud en GCP/03.- Clase práctica - Infraestructura Cloud en GCP.tex>)
 
-## 3) Ruta de aprendizaje sugerida
+### Módulo 2. Pipelines, Observabilidad Y Eventos
 
-Sigue este orden para aprovechar la continuidad tecnica del curso:
+- [Temario del módulo](<02.-Módulo 2 - Pipelines distribuidos, observabilidad y análisis de eventos en cloud/00.-temario modulo 2.md>)
+- [Clase 4. ELK Stack](<02.-Módulo 2 - Pipelines distribuidos, observabilidad y análisis de eventos en cloud/04.- ELK Stack/04.- ELK Stack.pdf>)
+- [Clase 5. Instalación de ELK Stack](<02.-Módulo 2 - Pipelines distribuidos, observabilidad y análisis de eventos en cloud/05.- Instalación de ELK Stack/05.- Instalacion de ELK Stack.tex>)
 
-1. Modulo 1: crea tu infraestructura base en GCP.
-2. Modulo 2: reutiliza esa infraestructura para levantar Elasticsearch y Kibana.
-3. Modulo 3: usa el pipeline para monitoreo y analisis de seguridad.
-4. Modulo 4: aplica IA/ML sobre los eventos recolectados.
-5. Modulo 5: despliega blockchain educativa sobre la infraestructura cloud.
+### Módulo 3. Telemetría, Monitoreo Y Seguridad
 
-Importante: los modulos estan conectados. No conviene saltarse actividades, porque el trabajo de una semana se reutiliza en la siguiente.
+- [Temario del módulo](<03.-Módulo 3 - Telemetría, monitoreo y análisis de seguridad en infraestructura cloud/00.-temario modulo 3.md>)
+- [Detección de ataques de fuerza bruta con Kibana](<03.-Módulo 3 - Telemetría, monitoreo y análisis de seguridad en infraestructura cloud/06.- Detección de Ataques de Fuerza Bruta con ELK/05.-Detección de Ataques de Fuerza Bruta mediante Análisis Estructurado de Logs en Kibana.tex>)
+- [Script de recolección de logs](<03.-Módulo 3 - Telemetría, monitoreo y análisis de seguridad en infraestructura cloud/06.- Detección de Ataques de Fuerza Bruta con ELK/collect_varlog_to_elk.py>)
+- [Script de preparación de entorno](<03.-Módulo 3 - Telemetría, monitoreo y análisis de seguridad en infraestructura cloud/06.- Detección de Ataques de Fuerza Bruta con ELK/setup_env.sh>)
+- [Clase práctica. Detección de ataques de fuerza bruta](<03.-Módulo 3 - Telemetría, monitoreo y análisis de seguridad en infraestructura cloud/07.- Clase práctica - Detección de Ataques de Fuerza Bruta con ELK/07.- Clase práctica - Detección de Ataques de Fuerza Bruta.tex>)
 
-## 4) Requisitos minimos para estudiantes
+### Módulo 4. IA Y ML Aplicados En Cloud
 
-- Cuenta activa en GCP (idealmente con creditos de estudiante o free tier).
+- [Temario del módulo](<04.-Módulo 4 - IA y ML aplicados en cloud/00.-temario modulo 4.md>)
+- [Aprendizaje automatizado en GCP](<04.-Módulo 4 - IA y ML aplicados en cloud/08.- Aprendizaje Automatizado en GCP/08.- Aprendizaje Automatizdo en GCP.tex>)
+
+### Módulo 5. Blockchain Y Tecnologías Descentralizadas
+
+- [Temario del módulo](<05.-modulo 5/05.-temario modulo 5.md>)
+
+## Bibliografía
+
+La bibliografía base está reunida en [06.-Bibliografía](<06.-Bibliografía/>). El temario general incluye la lista completa de referencias utilizadas en el curso.
+
+## Qué Se Versiona
+
+Este repositorio incluye:
+
+- temarios y documentos de planeación;
+- materiales de clase en Markdown, LaTeX y PDF;
+- tareas, guías prácticas y scripts de apoyo;
+- bibliografía base seleccionada;
+- clase LaTeX común `lbustio_lecture_notes.cls`.
+
+No se versionan:
+
+- videos o grabaciones (`*.mp4`, `*.mov`, `*.mkv`, `*.avi`, `*.webm`);
+- configuración local de editor (`.vscode/`, `.idea/`);
+- salidas de compilación LaTeX (`build/`, `*.aux`, `*.toc`, `*.synctex.gz`, etc.);
+- entornos Python, caches, logs y archivos temporales;
+- datos académicos sensibles.
+
+## Requisitos Para Estudiantes
+
+- Cuenta activa en Google Cloud Platform.
+- Cliente SSH y conocimientos básicos de Linux.
 - Acceso estable a internet.
-- Equipo con cliente SSH.
-- Conocimientos basicos de Linux y linea de comandos.
-- Disposicion para documentar evidencias tecnicas en cada actividad.
+- Capacidad para documentar evidencias técnicas.
+- Disposición para analizar costos, riesgos y decisiones de seguridad.
 
-## 5) Forma de trabajo recomendada
+## Forma De Trabajo
 
-Para cada actividad practica:
+Para cada práctica:
 
-1. Planea: que vas a desplegar y por que.
-2. Ejecuta: implementa en cloud.
-3. Verifica: comprueba que funciona con evidencia.
-4. Analiza: identifica riesgos, costos y mejoras.
-5. Documenta: registra pasos, errores y solucion.
+1. Planear la arquitectura y los servicios a utilizar.
+2. Ejecutar el despliegue o configuración.
+3. Verificar el funcionamiento con evidencia.
+4. Analizar riesgos, costos, errores y mejoras.
+5. Documentar el proceso y los resultados.
 
-## 6) Entregables esperados por modulo
+## Buenas Prácticas
 
-### Modulo 1
+- Mantener el orden por módulo y sesión.
+- Usar nombres descriptivos para archivos y carpetas.
+- No subir credenciales, tokens, llaves privadas ni datos personales.
+- Documentar comandos, errores, soluciones y evidencias.
+- Evitar subir archivos generados cuando puedan reproducirse.
 
-- VM Linux funcional en GCP.
-- Acceso SSH operativo.
-- Configuracion basica de firewall.
-- Servicio web minimo accesible.
-- Uso de almacenamiento cloud.
-- Diagrama o descripcion de arquitectura desplegada.
-
-### Modulo 2
-
-- Elasticsearch funcional.
-- Kibana funcional.
-- Dataset/eventos indexados.
-- Consultas de busqueda basicas.
-- Dashboard inicial de analisis.
-
-### Modulo 3
-
-- Recoleccion de logs (por ejemplo: auth.log, syslog, web logs).
-- Centralizacion de eventos.
-- Dashboards de monitoreo de seguridad.
-- Analisis de actividad sospechosa y hallazgos.
-
-### Modulo 4
-
-- Dataset de telemetria preparado para analisis.
-- Uso de BigQuery y/o Vertex AI.
-- Analisis automatizado de eventos.
-- Interpretacion critica de resultados (incluyendo limites).
-
-### Modulo 5
-
-- Blockchain educativa privada desplegada.
-- API funcional para consultas/transacciones.
-- Evidencia de bloques, hashes y validacion.
-- Analisis critico de ventajas y limitaciones.
-
-## 7) Evaluacion del curso
-
-La evaluacion se centra en evidencia tecnica y no en examenes teoricos tradicionales.
-
-Se considera principalmente:
-
-- Laboratorios funcionales.
-- Tareas practicas.
-- Reportes tecnicos.
-- Dashboards.
-- Analisis de eventos.
-- Calidad de documentacion y criterio tecnico.
-
-No se contempla un proyecto final tradicional.
-
-## 8) Buenas practicas en este repositorio
-
-- Mantener orden por modulo.
-- Nombrar archivos de forma clara.
-- Evitar subir datos sensibles (claves, tokens, credenciales).
-- Incluir evidencia reproducible (comandos, capturas, logs anonimizados).
-- Explicar errores y como los resolviste.
-
-## 9) Uso de Git para estudiantes
-
-Este repositorio ya esta inicializado con Git.
+## Uso De Git
 
 Flujo recomendado:
 
-1. Hacer cambios por actividad.
-2. Confirmar con commits pequenos y descriptivos.
-3. Escribir mensajes de commit claros.
+```bash
+git status
+git add <archivos>
+git commit -m "modulo X: descripcion breve"
+git push
+```
 
-Ejemplos de mensajes utiles:
+Ejemplos de mensajes:
 
-- modulo 1: despliegue inicial de VM y firewall
-- modulo 2: indexacion de eventos y dashboard base
-- modulo 3: correlacion de intentos fallidos SSH
+- `modulo 1: agrega tarea de infraestructura basica`
+- `modulo 2: actualiza material de ELK Stack`
+- `modulo 3: agrega scripts de recoleccion de logs`
 
-## 10) Etica y seguridad academica
+## Ética Y Seguridad Académica
 
-El curso usa analisis de seguridad con enfoque defensivo y educativo.
+El curso utiliza análisis de seguridad con fines defensivos y educativos.
 
-- No ejecutar pruebas ofensivas fuera del entorno autorizado.
-- No usar datos personales reales sin autorizacion.
+- No ejecutar pruebas ofensivas fuera de entornos autorizados.
+- No usar datos personales reales sin autorización.
 - No compartir credenciales ni llaves privadas.
-- Respetar politicas institucionales y legales.
-
-## 11) Bibliografia base
-
-La bibliografia base del curso esta recogida tambien en el temario general, aqui tienes las referencias principales como material de consulta:
-
-- Antonopoulos, A. M., y Wood, G. (2019). Mastering Ethereum: Building Smart Contracts and DApps. O'Reilly Media.
-- Foster, I., y Gannon, D. B. (2017). Cloud Computing for Science and Engineering. MIT Press.
-- Hwang, K. (2017). Cloud Computing for Machine Learning and Cognitive Applications. MIT Press.
-- Vacca, J. R. (Ed.). (2016). Cloud Computing Security: Foundations and Challenges. CRC Press.
-- Google Cloud. (s. f.). [Google Cloud Fundamentals: Core Infrastructure (en espanol)](https://www.coursera.org/learn/gcp-fundamentals-es). Coursera.
-- YouTube. (s. f.). [Introduccion a Google Cloud Platform](https://www.youtube.com/watch?v=lvZk_sc8u5I).
-- YouTube. (s. f.). [Google Cloud Platform Tutorial](https://www.youtube.com/watch?v=4dNSAIwXO5M).
-- YouTube. (s. f.). [Google Cloud Platform for Beginners](https://www.youtube.com/watch?v=HU58N5fz7B8).
+- Respetar políticas institucionales y legales.
