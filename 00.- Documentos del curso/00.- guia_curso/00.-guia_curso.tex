@@ -283,7 +283,31 @@ A continuación se presenta el cronograma tentativo del curso. Este cronograma e
   \end{itemize}
 \\
 \hline
-8  & 05/06 & & \\
+8  & 05/06 & \textbf{Aprendizaje Automatizado en Google Cloud Platform}
+  \begin{itemize}
+    \item Introduccion practica al flujo completo de Machine Learning en GCP.
+    \item Uso de Cloud Storage para almacenar datasets y artefactos de modelo.
+    \item Creacion de un notebook en Colab Enterprise como entorno de desarrollo administrado.
+    \item Carga, exploracion y preparacion del dataset Titanic.
+    \item Entrenamiento de un modelo supervisado con Python, Pandas y Scikit-Learn.
+    \item Evaluacion del modelo mediante accuracy, matriz de confusion e importancia de variables.
+    \item Serializacion del modelo entrenado y almacenamiento en Cloud Storage.
+    \item Despliegue del modelo como API REST mediante Cloud Run.
+    \item Prueba del servicio de inferencia desde un cliente externo mediante \texttt{curl}.
+  \end{itemize}
+&
+\textbf{Tarea}
+  \begin{itemize}
+    \item Crear o reutilizar un bucket de Cloud Storage con la estructura \texttt{data/} y \texttt{models/}.
+    \item Subir el dataset \texttt{titanic.csv} y cargarlo desde Colab Enterprise.
+    \item Ejecutar el proceso completo de preparacion de datos, entrenamiento, evaluacion y prediccion.
+    \item Guardar el modelo entrenado como \texttt{titanic\_model.pkl} y subirlo a Cloud Storage.
+    \item Construir los archivos \texttt{app.py}, \texttt{requirements.txt} y \texttt{Dockerfile}.
+    \item Desplegar la API en Cloud Run y validar los endpoints de estado y prediccion.
+    \item Documentar arquitectura, codigo ejecutado, evidencias, errores encontrados, soluciones aplicadas, resultados del modelo y reflexion sobre el uso de ML en cloud.
+    \item Entregar reporte en PDF con capturas, comandos relevantes, URL del servicio o evidencia de despliegue, prueba de inferencia y analisis final.
+  \end{itemize}
+\\
 \hline
 9  & 08/06 & & \\
 \hline
