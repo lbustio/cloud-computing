@@ -283,7 +283,26 @@ A continuación se presenta el cronograma tentativo del curso. Este cronograma e
   \end{itemize}
 \\
 \hline
-8  & 05/06 & \textbf{Aprendizaje Automatizado en Google Cloud Platform}
+8  & 05/06 & \textbf{Introduccion al Aprendizaje Automatizado}
+  \begin{itemize}
+    \item Introduccion a la ciencia de datos y su relacion con inteligencia artificial, aprendizaje automatizado y analisis de datos.
+    \item Metodologia de proyectos de ciencia de datos: comprension del negocio, enfoque analitico, requisitos, recopilacion y comprension de datos.
+    \item Preparacion de datos: limpieza, valores faltantes, errores, valores anomalos, integracion de fuentes y consolidacion.
+    \item Conceptos basicos: dataset, caracteristicas, conjunto de entrenamiento y conjunto de prueba.
+    \item Modelado, evaluacion, implementacion y retroalimentacion de modelos.
+    \item Tipos de aprendizaje automatizado: supervisado, no supervisado y por refuerzo.
+    \item Agrupamiento no supervisado y algoritmo K-Means.
+    \item Clasificacion supervisada y algoritmo k-Vecinos Mas Cercanos (kNN).
+    \item Discusion de aplicaciones y relacion con problemas de ciberseguridad en entornos cloud.
+  \end{itemize}
+&
+\textbf{Sin tarea}
+  \begin{itemize}
+    \item No se asigna tarea entregable en esta sesion.
+  \end{itemize}
+\\
+\hline
+9  & 07/06 & \textbf{Aprendizaje Automatizado en Google Cloud Platform}
   \begin{itemize}
     \item Introduccion practica al flujo completo de Machine Learning en GCP.
     \item Uso de Cloud Storage para almacenar datasets y artefactos de modelo.
@@ -309,21 +328,78 @@ A continuación se presenta el cronograma tentativo del curso. Este cronograma e
   \end{itemize}
 \\
 \hline
-9  & 08/06 & & \\
+10 & 08/06 & \textbf{Introduccion al Aprendizaje Automatizado}
+  \begin{itemize}
+    \item Introduccion a la Ciencia de Datos: concepto, campos relacionados y aplicaciones.
+    \item Metodologia fundamental para proyectos de Ciencia de Datos: comprension del negocio, enfoque analitico, requisitos de datos, recopilacion, comprension y preparacion de datos.
+    \item Preparacion de datos: limpieza, valores faltantes, errores, valores anomalos, combinacion e integracion de fuentes.
+    \item Modelado, evaluacion, implementacion y retroalimentacion de modelos.
+    \item Conceptos basicos: dataset, caracteristicas, muestras, conjunto de entrenamiento y conjunto de prueba.
+    \item Tipos de aprendizaje automatizado: supervisado, no supervisado y por refuerzo.
+    \item Agrupamiento no supervisado: objetivo, medidas de similitud y algoritmo K-Means.
+    \item Clasificacion supervisada: motivacion y algoritmo k-Vecinos Mas Cercanos (kNN).
+  \end{itemize}
+&
+\textbf{Sin tarea}
+  \begin{itemize}
+    \item No se asigna tarea entregable en esta sesion.
+  \end{itemize}
+\\
 \hline
-10 & 12/06 & & \\
+11 & 12/06 & \textbf{Clase practica: Aprendizaje Automatizado en Google Cloud Platform}
+  \begin{itemize}
+    \item Creacion del bucket en Cloud Storage y carga del dataset Titanic.
+    \item Creacion y configuracion del notebook en Colab Enterprise.
+    \item Verificacion del entorno de ejecucion: Python, Pandas y Scikit-Learn.
+    \item Carga, exploracion y preparacion del dataset: seleccion de variables, valores faltantes y codificacion de categorias.
+    \item Division del dataset en conjuntos de entrenamiento y prueba.
+    \item Entrenamiento de un modelo Random Forest con Scikit-Learn.
+    \item Evaluacion del modelo: accuracy, matriz de confusion e importancia de variables.
+    \item Serializacion del modelo entrenado y almacenamiento del artefacto en Cloud Storage.
+    \item Construccion de la API REST con Flask, contenedor Docker y despliegue en Cloud Run.
+    \item Prueba del servicio de inferencia mediante \texttt{curl}.
+  \end{itemize}
+&
+\textbf{Tarea}
+  \begin{itemize}
+    \item Completar el flujo de Machine Learning: preparacion de datos, entrenamiento, evaluacion y prediccion.
+    \item Verificar que el modelo entrenado (\texttt{titanic\_model.pkl}) quede almacenado en Cloud Storage.
+    \item Construir los archivos \texttt{app.py}, \texttt{requirements.txt} y \texttt{Dockerfile} para la API.
+    \item Desplegar el servicio en Cloud Run y validar los endpoints de estado (\texttt{/}) y prediccion (\texttt{/predict}).
+    \item Documentar arquitectura, codigo ejecutado, evidencias, errores encontrados, soluciones aplicadas, resultados del modelo y reflexion sobre el uso de ML en cloud.
+    \item Entregar reporte en PDF con capturas, comandos relevantes, URL del servicio o evidencia de despliegue, prueba de inferencia y analisis final.
+    \item El reporte funciona como evidencia de cierre del modulo de Inteligencia Artificial y Aprendizaje Automatizado en GCP.
+  \end{itemize}
+\\
 \hline
-11 & 15/06 & & \\
+12 & 15/06 & \textbf{Clase practica: Deteccion de APKs maliciosas mediante permisos de Android}
+  \begin{itemize}
+    \item Planteamiento: clasificacion de malware Android mediante analisis estatico de permisos declarados en \texttt{AndroidManifest.xml}.
+    \item Carga, limpieza y representacion de APKs como vectores binarios de permisos.
+    \item Analisis exploratorio: distribucion de clases, permisos por APK, permisos frecuentes, diferenciales y sensibles.
+    \item Mineria de itemsets frecuentes (Apriori), reglas de asociacion y contraste estadistico de hipotesis.
+    \item Agrupamiento no supervisado (K-Means) y modelos supervisados (Regresion Logistica, Random Forest, Extra Trees).
+    \item Evaluacion: accuracy, recall, F1, ROC-AUC, validacion cruzada e importancia de caracteristicas.
+    \item Guardado del modelo y analisis de APKs reales con la aplicacion web Flask.
+  \end{itemize}
+&
+\textbf{Tarea}
+  \begin{itemize}
+    \item Ejecutar el notebook y contrastar las hipotesis H1--H6 con evidencias del experimento.
+    \item Probar la aplicacion web con una APK real e incluir capturas de los resultados.
+    \item Entregar reporte en PDF con analisis exploratorio, metricas de los modelos, contraste de hipotesis y reflexion sobre las limitaciones del analisis estatico por permisos.
+  \end{itemize}
+\\
 \hline
-12 & 19/06 & & \\
+13 & 19/06 & & \\
 \hline
-13 & 22/06 & & \\
+14 & 22/06 & & \\
 \hline
-14 & 26/06 & & \\
+15 & 26/06 & & \\
 \hline
-15 & 29/06 & & \\
+16 & 29/06 & & \\
 \hline
-16 & 03/07 & & \\
+17 & 03/07 & & \\
 \hline
 
 \end{longtable}
