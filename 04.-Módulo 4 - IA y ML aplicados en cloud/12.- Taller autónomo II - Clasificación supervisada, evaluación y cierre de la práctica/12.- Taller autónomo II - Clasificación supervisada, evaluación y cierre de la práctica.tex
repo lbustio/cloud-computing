@@ -1,0 +1,269 @@
+\documentclass[
+  coursetitle={Cómputo Nube y Tecnologías Emergentes},
+  coursehours={96},
+  coursedate={Verano 2026},
+  doctype={Taller},
+  otherlangs={english,french},
+  authorname={Lázaro},
+  authorsurname={Bustio-Martínez},
+  authortitle={PhD},
+  role={Profesor Investigador},
+  email={lbustio@inaoe.mx},
+  phone={5559504000},
+  ext={7459},
+  institution={Instituto Nacional de Astrofísica, Óptica y Electrónica (INAOE)},
+  department={Maestría en Ciencias en Tecnologías de Seguridad},
+  address={Luis Enrique Erro 1, Sta. Ma. Tonantzintla, San Andrés Cholula, CP 72840, Puebla, México},
+  margin={0.5in}
+]{../../lbustio_lecture_notes}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{array}
+\usepackage{tabularx}
+\usepackage{enumitem}
+\usepackage{longtable}
+\usepackage{booktabs}
+\usepackage{url}
+\usepackage{listings}
+\usepackage{xcolor}
+\usepackage{graphicx}
+\usepackage{tcolorbox}
+\usepackage{verbatim}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta,backgrounds,fit,positioning}
+
+\definecolor{lightgray}{rgb}{0.97, 0.97, 0.97}
+\definecolor{darkblue}{rgb}{0, 0, 0.6}
+\definecolor{gcpblue}{HTML}{4285F4}
+\definecolor{gcpgreen}{HTML}{34A853}
+\definecolor{gcpyellow}{HTML}{FBBC04}
+\definecolor{gcpred}{HTML}{EA4335}
+\definecolor{softgray}{HTML}{F5F7FA}
+\definecolor{androidgreen}{HTML}{3DDC84}
+\definecolor{androiddark}{HTML}{073042}
+
+\lstset{
+  backgroundcolor=\color{lightgray},
+  basicstyle=\ttfamily\small,
+  breaklines=true,
+  frame=single,
+  columns=fullflexible,
+  showstringspaces=false,
+  commentstyle=\color{gray},
+  keywordstyle=\color{darkblue},
+  inputencoding=utf8,
+  extendedchars=true,
+  literate={á}{{\'a}}1 {é}{{\'e}}1 {í}{{\'i}}1 {ó}{{\'o}}1 {ú}{{\'u}}1 {ñ}{{\~n}}1
+           {Á}{{\'A}}1 {É}{{\'E}}1 {Í}{{\'I}}1 {Ó}{{\'O}}1 {Ú}{{\'U}}1 {Ñ}{{\~N}}1
+}
+
+\setlist[itemize]{topsep=0.3em,itemsep=0.2em}
+\setlist[enumerate]{topsep=0.3em,itemsep=0.2em}
+
+\begin{document}
+
+\IberoCover
+
+\section{Descripción de la sesión}
+
+Esta sesión corresponde al segundo y último taller autónomo de la práctica \textit{Detección de APKs maliciosas mediante permisos de Android}. El objetivo de hoy es completar la segunda mitad del análisis: entrenar y evaluar los modelos supervisados, contrastar la totalidad de las hipótesis, probar la aplicación web con una APK real y elaborar el reporte final.
+
+Al finalizar esta sesión, el estudiante habrá completado las siguientes etapas:
+
+\begin{itemize}
+    \item minería de itemsets frecuentes y generación de reglas de asociación y clasificación;
+    \item contraste estadístico de H2 mediante la prueba de Mann-Whitney;
+    \item entrenamiento y evaluación de modelos supervisados: Regresión Logística, Random Forest y Extra Trees;
+    \item evaluación detallada del mejor modelo: reporte de clasificación, matriz de confusión y curva ROC;
+    \item validación cruzada estratificada;
+    \item análisis de importancia de características;
+    \item exploración de un subconjunto reducido de permisos;
+    \item guardado del modelo entrenado;
+    \item prueba de la aplicación web con una APK real;
+    \item contraste completo de las hipótesis H1--H6;
+    \item elaboración y entrega del reporte final en PDF.
+\end{itemize}
+
+\begin{tcolorbox}[title=Prerequisito]
+Esta sesión continúa directamente donde terminó el taller del 19 de junio. El estudiante debe contar con todas las evidencias del análisis exploratorio, el agrupamiento K-Means y el contraste parcial de H2, H3 y H4 documentados en su bitácora técnica antes de iniciar.
+\end{tcolorbox}
+
+\section{Minería de itemsets frecuentes y reglas de asociación}
+
+Ejecute las celdas de minería de itemsets del notebook. Analice los resultados:
+
+\begin{itemize}
+    \item ¿Cuántos itemsets frecuentes se encontraron con el soporte mínimo configurado?
+    \item Revise las diez reglas de asociación con mayor lift. ¿Cuáles combinaciones de permisos tienen mayor asociación mutua?
+    \item Revise las reglas de clasificación: ¿qué combinaciones de permisos predicen la clase maliciosa con mayor confianza?
+\end{itemize}
+
+\begin{tcolorbox}[title=Evidencia para H5]
+Las reglas de clasificación que incluyen dos o más permisos en el antecedente y tienen confianza superior a las reglas de un solo permiso constituyen evidencia a favor de H5, que afirma que las combinaciones tienen mayor capacidad predictiva que los permisos individuales.
+\end{tcolorbox}
+
+\section{Contraste estadístico de H2}
+
+Ejecute la celda de la prueba de Mann-Whitney. Registre en su bitácora:
+
+\begin{itemize}
+    \item el estadístico U obtenido;
+    \item el p-value;
+    \item la media de permisos de las APKs benignas;
+    \item la media de permisos de las APKs maliciosas;
+    \item la conclusión estadística: ¿se rechaza la hipótesis nula?
+\end{itemize}
+
+\begin{tcolorbox}[title=Punto de control 1]
+\textbf{Resultado esperado:} p-value extremadamente pequeño ($p \ll 0.05$). Las APKs maliciosas solicitan significativamente más permisos. H2 queda respaldada con evidencia estadística.
+\end{tcolorbox}
+
+\section{Entrenamiento de modelos supervisados}
+
+Ejecute las celdas de partición del dataset y entrenamiento de modelos. Verifique que el conjunto se divide de forma estratificada (75\% entrenamiento / 25\% prueba).
+
+Se entrenan cuatro modelos: una línea base mayoritaria (\texttt{DummyClassifier}), Regresión Logística, Random Forest y Extra Trees. Registre en su bitácora la tabla de métricas completa con los valores de accuracy, precisión, recall, F1 y ROC-AUC para cada modelo.
+
+\begin{tcolorbox}[title=Evidencia para H1]
+H1 afirma que los modelos supervisados superan la línea base trivial. Compare el F1 del mejor modelo supervisado con el F1 de la línea base mayoritaria. Una diferencia significativa respalda H1.
+\end{tcolorbox}
+
+\section{Evaluación detallada del mejor modelo}
+
+Identifique el mejor modelo según la métrica F1 sobre la clase maliciosa. Para ese modelo, ejecute y documente:
+
+\subsection{Reporte de clasificación}
+
+Registre en su bitácora la tabla completa con precisión, recall y F1 por clase (benigna y maliciosa).
+
+\begin{tcolorbox}[title=Falsos negativos en seguridad]
+En detección de malware, un falso negativo clasifica una APK maliciosa como benigna, lo cual es el error más costoso. Preste especial atención al recall de la clase maliciosa. ¿Qué porcentaje de APKs maliciosas fue correctamente detectado?
+\end{tcolorbox}
+
+\subsection{Matriz de confusión}
+
+Genere y capture la matriz de confusión. Interprete cada celda:
+
+\begin{itemize}
+    \item verdaderos positivos (maliciosas correctamente clasificadas);
+    \item falsos negativos (maliciosas clasificadas como benignas);
+    \item falsos positivos (benignas clasificadas como maliciosas);
+    \item verdaderos negativos (benignas correctamente clasificadas).
+\end{itemize}
+
+\subsection{Curva ROC}
+
+Capture la curva ROC e identifique el área bajo la curva (AUC). ¿Qué indica un AUC cercano a 1?
+
+\section{Validación cruzada}
+
+Ejecute la validación cruzada estratificada con 5 folds para todos los modelos. Registre la media y desviación estándar de accuracy, F1 y ROC-AUC por modelo.
+
+Reflexione: ¿el desempeño obtenido en la partición única es consistente con el desempeño promedio en la validación cruzada? ¿Hay evidencia de sobreajuste?
+
+\section{Importancia de características}
+
+Ejecute la celda de importancia de variables para el mejor modelo. Registre:
+
+\begin{itemize}
+    \item los diez permisos con mayor importancia;
+    \item si estos permisos coinciden con los permisos diferenciales identificados en el EDA;
+    \item qué capacidades del dispositivo Android habilitan los permisos más importantes.
+\end{itemize}
+
+\begin{tcolorbox}[title=Punto de control 2]
+Los permisos más importantes del modelo deben coincidir en gran medida con los permisos que el EDA identificó como más frecuentes en malware. Esta coherencia entre el análisis exploratorio y el modelo supervisado refuerza la validez de los resultados.
+\end{tcolorbox}
+
+\section{Subconjunto reducido de permisos}
+
+Ejecute las celdas que entrenan el modelo con subconjuntos de $k = 10, 20, 30, 50, 100$ permisos. Construya una tabla con los valores de F1, recall y ROC-AUC para cada $k$.
+
+\begin{tcolorbox}[title=Evidencia para H6]
+H6 afirma que un subconjunto reducido de permisos permite obtener un desempeño comparable al conjunto completo. ¿A partir de qué valor de $k$ el desempeño se estabiliza? ¿Cuántos permisos son suficientes para mantener un recall alto de malware?
+\end{tcolorbox}
+
+\section{Guardado del modelo}
+
+Ejecute la celda de serialización del modelo. Verifique que el archivo \texttt{models/android\_permission\_best\_model.joblib} fue creado correctamente. El artefacto incluye el modelo entrenado, los nombres de los permisos y el mapeo de clases, y es necesario para que la aplicación web funcione.
+
+\section{Prueba de la aplicación web}
+
+Inicie la aplicación Flask desde la carpeta raíz del proyecto:
+
+\begin{lstlisting}
+conda activate apk-malware
+python -m frontend_webapp.app
+\end{lstlisting}
+
+Abra el navegador en:
+
+\begin{lstlisting}
+http://127.0.0.1:8001
+\end{lstlisting}
+
+Suba una APK real de la carpeta \texttt{testapk/} o descargue una APK de una fuente legítima. Registre en su bitácora:
+
+\begin{itemize}
+    \item nombre del archivo APK analizado;
+    \item clase predicha (benigna / maliciosa);
+    \item probabilidad de malware reportada;
+    \item score de riesgo (0--100);
+    \item lista de permisos detectados en la APK;
+    \item captura de pantalla de la interfaz con el resultado.
+\end{itemize}
+
+\begin{tcolorbox}[title=Punto de control 3]
+La aplicación web debe aceptar el archivo APK, extraer sus permisos, consultar el modelo y devolver una predicción con probabilidad y score de riesgo. Si la aplicación no inicia, verifique que el archivo \texttt{.joblib} exista en la carpeta \texttt{models/}.
+\end{tcolorbox}
+
+\section{Contraste completo de hipótesis}
+
+Con todos los resultados obtenidos en ambas sesiones del taller, complete el contraste de las seis hipótesis:
+
+\begin{description}
+    \item[H1.] ¿Los modelos supervisados superaron la línea base? ¿Cuál fue la diferencia en F1?
+    \item[H2.] ¿El p-value de Mann-Whitney permitió rechazar la hipótesis nula? ¿Cuántos permisos solicitan en promedio cada clase?
+    \item[H3.] ¿Las APKs maliciosas tienen más permisos sensibles en promedio? ¿Cuáles son los tres más frecuentes en malware?
+    \item[H4.] ¿Cuántos permisos son compartidos entre clases? ¿Qué implica este solapamiento para la clasificación?
+    \item[H5.] ¿Las reglas de clasificación con múltiples permisos tienen mayor confianza que las de un solo permiso?
+    \item[H6.] ¿Con cuántos permisos el modelo reducido obtiene un F1 comparable al modelo completo?
+\end{description}
+
+\section{Limitaciones del análisis estático}
+
+Dedique al menos dos párrafos de su reporte a discutir las limitaciones del análisis estático por permisos. Considere los siguientes puntos:
+
+\begin{itemize}
+    \item El solapamiento entre permisos de APKs benignas y maliciosas limita la precisión del clasificador.
+    \item Algunas APKs maliciosas solicitan pocos permisos o emplean técnicas de ofuscación para evitar análisis estáticos.
+    \item Los permisos declarados en el manifiesto pueden no reflejar el comportamiento real en tiempo de ejecución.
+    \item El dataset utilizado es relativamente pequeño; un conjunto más grande podría mejorar la generalización de los modelos.
+    \item El análisis estático debe complementarse con análisis dinámico para detectar malware sofisticado.
+\end{itemize}
+
+\section{Reporte final}
+
+El reporte final debe entregarse en formato PDF y cubrir los siguientes apartados:
+
+\begin{enumerate}
+    \item \textbf{Introducción:} pregunta de investigación, motivación y descripción del dataset.
+    \item \textbf{Metodología:} descripción del flujo de análisis, herramientas utilizadas y configuración del entorno.
+    \item \textbf{Análisis exploratorio:} hallazgos principales del EDA con gráficas y tablas.
+    \item \textbf{Minería de reglas:} itemsets frecuentes y reglas de clasificación más relevantes.
+    \item \textbf{Modelos supervisados:} tabla comparativa de métricas, matriz de confusión, curva ROC e importancia de variables del mejor modelo.
+    \item \textbf{Validación cruzada:} resultados de la validación cruzada estratificada.
+    \item \textbf{Subconjunto reducido:} tabla de métricas por valor de $k$.
+    \item \textbf{Contraste de hipótesis:} evidencias numéricas para H1--H6, con conclusión explícita para cada una.
+    \item \textbf{Prueba de la aplicación web:} nombre de la APK analizada, resultado obtenido y captura de pantalla.
+    \item \textbf{Limitaciones y reflexión:} análisis crítico de las limitaciones del enfoque estático.
+    \item \textbf{Conclusiones:} síntesis de los aprendizajes más relevantes de la práctica.
+    \item \textbf{Problemas técnicos:} registro de errores encontrados y soluciones aplicadas.
+\end{enumerate}
+
+\begin{tcolorbox}[title=Entrega]
+El reporte debe subirse a Google Classroom en formato PDF antes de la fecha límite indicada por el profesor. Recuerde que cada estudiante debe subir su propio reporte de forma individual, aunque la práctica se haya realizado en equipo.
+\end{tcolorbox}
+
+\end{document}

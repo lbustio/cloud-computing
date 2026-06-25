@@ -376,11 +376,9 @@ A continuación se presenta el cronograma tentativo del curso. Este cronograma e
   \begin{itemize}
     \item Planteamiento: clasificacion de malware Android mediante analisis estatico de permisos declarados en \texttt{AndroidManifest.xml}.
     \item Carga, limpieza y representacion de APKs como vectores binarios de permisos.
-    \item Analisis exploratorio: distribucion de clases, permisos por APK, permisos frecuentes, diferenciales y sensibles.
-    \item Mineria de itemsets frecuentes (Apriori), reglas de asociacion y contraste estadistico de hipotesis.
+    \item Analisis exploratorio.
     \item Agrupamiento no supervisado (K-Means) y modelos supervisados (Regresion Logistica, Random Forest, Extra Trees).
-    \item Evaluacion: accuracy, recall, F1, ROC-AUC, validacion cruzada e importancia de caracteristicas.
-    \item Guardado del modelo y analisis de APKs reales con la aplicacion web Flask.
+    \item Evaluacion.
   \end{itemize}
 &
 \textbf{Tarea}
@@ -391,11 +389,67 @@ A continuación se presenta el cronograma tentativo del curso. Este cronograma e
   \end{itemize}
 \\
 \hline
-13 & 19/06 & & \\
+13 & 19/06 & \textbf{Taller autónomo I: Análisis exploratorio y modelado no supervisado de APKs}
+  \begin{itemize}
+    \item Configuracion del entorno de trabajo: Colab Enterprise o entorno local con Python, Pandas y Scikit-Learn.
+    \item Carga del dataset de permisos de Android y revision de su estructura.
+    \item Limpieza de datos: deteccion de duplicados, manejo de valores faltantes y verificacion de tipos.
+    \item Representacion vectorial binaria de APKs a partir de los permisos declarados en \texttt{AndroidManifest.xml}.
+    \item Analisis exploratorio: distribucion de permisos por clase, frecuencia de permisos, correlaciones y desequilibrio de clases.
+    \item Reduccion de dimensionalidad y visualizacion preliminar de la estructura del dataset.
+    \item Aplicacion de K-Means y evaluacion del agrupamiento obtenido.
+    \item Documentacion de hallazgos parciales y formulacion de hipotesis para la siguiente sesion.
+  \end{itemize}
+&
+\textbf{Avance esperado al finalizar esta sesion}
+  \begin{itemize}
+    \item Dataset cargado, limpiado y representado como matriz binaria de permisos.
+    \item Analisis exploratorio documentado con visualizaciones y observaciones clave.
+    \item Agrupamiento K-Means ejecutado y resultados registrados.
+    \item Hipotesis H1--H3 contrastadas con las evidencias obtenidas hasta este punto.
+    \item Bitacora tecnica actualizada con comandos, graficas y decisiones tomadas.
+  \end{itemize}
+\\
 \hline
-14 & 22/06 & & \\
+14 & 22/06 & \textbf{Taller autónomo II: Clasificacion supervisada, evaluacion y cierre de la practica}
+  \begin{itemize}
+    \item Entrenamiento de modelos supervisados: Regresion Logistica, Random Forest y Extra Trees.
+    \item Evaluacion comparativa: accuracy, precision, recall, F1-score y matriz de confusion por modelo.
+    \item Analisis de importancia de variables: permisos mas relevantes para la clasificacion de malware.
+    \item Contraste de hipotesis H4--H6 con las metricas obtenidas en los experimentos.
+    \item Prueba de la aplicacion web con una APK real: interpretacion del resultado y captura de evidencias.
+    \item Discusion critica sobre las limitaciones del analisis estatico por permisos.
+    \item Integracion de todas las evidencias y elaboracion del reporte final.
+  \end{itemize}
+&
+\textbf{Tarea}
+  \begin{itemize}
+    \item Completar el notebook con los tres modelos supervisados y sus metricas de evaluacion.
+    \item Contrastar la totalidad de las hipotesis H1--H6 con evidencias del experimento.
+    \item Probar la aplicacion web con una APK real e incluir capturas de los resultados.
+    \item Elaborar el reporte final en PDF con: analisis exploratorio, descripcion de modelos, metricas, contraste de hipotesis, evidencias de la prueba web y reflexion sobre las limitaciones del analisis estatico.
+  \end{itemize}
+\\
 \hline
-15 & 26/06 & & \\
+15 & 26/06 & \textbf{Blockchain y Tecnologías Descentralizadas}
+  \begin{itemize}
+    \item ¿Qué es blockchain?
+    \item Estructura de un bloque.
+    \item Funciones hash criptográficas.
+    \item Transacciones.
+    \item Mecanismos de consenso.
+    \item Arquitectura de una red blockchain.
+    \item Blockchain y ciberseguridad.
+    \item Limitaciones y riesgos: escalabilidad, consumo energético, latencia, privacidad e irreversibilidad.
+    \item Comparación blockchain vs.\ base de datos convencional.
+  \end{itemize}
+&
+\textbf{Sin tarea}
+  \begin{itemize}
+    \item No se asigna tarea entregable en esta sesion.
+    \item Preparar para la sesion siguiente una VM Linux en GCP con acceso SSH y puertos necesarios abiertos en las reglas de firewall. Se puede reutilizar la infraestructura desplegada en modulos anteriores.
+  \end{itemize}
+\\
 \hline
 16 & 29/06 & & \\
 \hline

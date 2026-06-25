@@ -1,0 +1,243 @@
+\documentclass[
+  coursetitle={Cómputo Nube y Tecnologías Emergentes},
+  coursehours={96},
+  coursedate={Verano 2026},
+  doctype={Taller},
+  otherlangs={english,french},
+  authorname={Lázaro},
+  authorsurname={Bustio-Martínez},
+  authortitle={PhD},
+  role={Profesor Investigador},
+  email={lbustio@inaoe.mx},
+  phone={5559504000},
+  ext={7459},
+  institution={Instituto Nacional de Astrofísica, Óptica y Electrónica (INAOE)},
+  department={Maestría en Ciencias en Tecnologías de Seguridad},
+  address={Luis Enrique Erro 1, Sta. Ma. Tonantzintla, San Andrés Cholula, CP 72840, Puebla, México},
+  margin={0.5in}
+]{../../lbustio_lecture_notes}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{array}
+\usepackage{tabularx}
+\usepackage{enumitem}
+\usepackage{longtable}
+\usepackage{booktabs}
+\usepackage{url}
+\usepackage{listings}
+\usepackage{xcolor}
+\usepackage{graphicx}
+\usepackage{tcolorbox}
+\usepackage{verbatim}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta,backgrounds,fit,positioning}
+
+\definecolor{lightgray}{rgb}{0.97, 0.97, 0.97}
+\definecolor{darkblue}{rgb}{0, 0, 0.6}
+\definecolor{gcpblue}{HTML}{4285F4}
+\definecolor{gcpgreen}{HTML}{34A853}
+\definecolor{gcpyellow}{HTML}{FBBC04}
+\definecolor{gcpred}{HTML}{EA4335}
+\definecolor{softgray}{HTML}{F5F7FA}
+\definecolor{androidgreen}{HTML}{3DDC84}
+\definecolor{androiddark}{HTML}{073042}
+
+\lstset{
+  backgroundcolor=\color{lightgray},
+  basicstyle=\ttfamily\small,
+  breaklines=true,
+  frame=single,
+  columns=fullflexible,
+  showstringspaces=false,
+  commentstyle=\color{gray},
+  keywordstyle=\color{darkblue},
+  inputencoding=utf8,
+  extendedchars=true,
+  literate={á}{{\'a}}1 {é}{{\'e}}1 {í}{{\'i}}1 {ó}{{\'o}}1 {ú}{{\'u}}1 {ñ}{{\~n}}1
+           {Á}{{\'A}}1 {É}{{\'E}}1 {Í}{{\'I}}1 {Ó}{{\'O}}1 {Ú}{{\'U}}1 {Ñ}{{\~N}}1
+}
+
+\setlist[itemize]{topsep=0.3em,itemsep=0.2em}
+\setlist[enumerate]{topsep=0.3em,itemsep=0.2em}
+
+\begin{document}
+
+\IberoCover
+
+\section{Descripción de la sesión}
+
+Esta sesión corresponde al primer taller autónomo de la práctica \textit{Detección de APKs maliciosas mediante permisos de Android}, introducida en la sesión del 15 de junio. El objetivo de hoy es avanzar de forma independiente en la primera mitad del análisis: preparar el entorno, cargar y limpiar el dataset, ejecutar el análisis exploratorio y aplicar agrupamiento no supervisado con K-Means.
+
+Al finalizar esta sesión, el estudiante habrá completado las siguientes etapas de la práctica:
+
+\begin{itemize}
+    \item configuración del entorno de trabajo;
+    \item carga y validación inicial del dataset;
+    \item limpieza y construcción de la matriz de permisos;
+    \item análisis exploratorio de datos (EDA);
+    \item análisis de permisos sensibles y solapamiento entre clases;
+    \item agrupamiento no supervisado con K-Means y visualización con PCA y t-SNE;
+    \item contraste preliminar de las hipótesis H1, H2 y H3.
+\end{itemize}
+
+\begin{tcolorbox}[title=Referencia]
+Toda la implementación se realiza en el notebook \texttt{notebooks/deteccion\_apks\_maliciosas\_permisos.ipynb} del proyecto \texttt{malware\_apk\_detection}, disponible desde la sesión del 15 de junio. Esta guía describe los objetivos de cada etapa y los resultados esperados; el código completo se encuentra en el notebook.
+\end{tcolorbox}
+
+\section{Preparación del entorno}
+
+Active el entorno conda del proyecto y abra el notebook:
+
+\begin{lstlisting}
+conda activate apk-malware
+jupyter lab notebooks/deteccion_apks_maliciosas_permisos.ipynb
+\end{lstlisting}
+
+Verifique que todas las dependencias estén disponibles ejecutando la primera celda de importaciones del notebook. Si algún paquete falta, instálelo con:
+
+\begin{lstlisting}
+pip install <nombre_del_paquete>
+\end{lstlisting}
+
+\begin{tcolorbox}[title=Punto de control 1]
+\textbf{Resultado esperado:} la primera celda del notebook se ejecuta sin errores y todas las bibliotecas quedan importadas correctamente.
+\end{tcolorbox}
+
+\section{Carga y validación inicial del dataset}
+
+Ejecute la celda de configuración de rutas y la celda de carga del dataset. Verifique las dimensiones, los tipos de datos y la distribución de la variable objetivo:
+
+\begin{itemize}
+    \item ¿Cuántas APKs tiene el dataset?
+    \item ¿Cuántos permisos candidatos hay?
+    \item ¿Existen valores faltantes o duplicados?
+    \item ¿Cuántas APKs son benignas y cuántas maliciosas?
+\end{itemize}
+
+\begin{tcolorbox}[title=Punto de control 2]
+\textbf{Resultado esperado:} 398 APKs, 330 permisos candidatos, dataset balanceado (199 benignas / 199 maliciosas), sin valores faltantes.
+\end{tcolorbox}
+
+\section{Limpieza y construcción de la matriz de permisos}
+
+Ejecute las celdas de limpieza: eliminación de duplicados exactos, manejo de valores faltantes y conversión a tipo entero binario.
+
+Registre en su bitácora:
+
+\begin{itemize}
+    \item ¿Cuántos duplicados se encontraron?
+    \item ¿Cuántas APKs quedan tras la limpieza?
+    \item ¿Cambió la distribución de clases? ¿Por qué?
+\end{itemize}
+
+\begin{tcolorbox}[title=Punto de control 3]
+\textbf{Resultado esperado:} 224 APKs tras eliminar 174 duplicados exactos; 114 benignas y 110 maliciosas.
+\end{tcolorbox}
+
+\section{Análisis exploratorio de datos}
+
+Ejecute las celdas de análisis exploratorio en el orden que aparecen en el notebook:
+
+\subsection{Distribución de clases}
+
+Genere el gráfico de barras con la distribución de clases tras la limpieza. Verifique que ambas clases tienen una representación equilibrada.
+
+\subsection{Número de permisos por APK}
+
+Ejecute las celdas que calculan y visualizan el número de permisos solicitados por clase. Registre:
+
+\begin{itemize}
+    \item media y mediana de permisos en APKs benignas;
+    \item media y mediana de permisos en APKs maliciosas;
+    \item observación visual del boxplot e histograma.
+\end{itemize}
+
+\begin{tcolorbox}[title=Evidencia para H2]
+Si las APKs maliciosas solicitan en promedio más permisos que las benignas, esta diferencia constituye evidencia preliminar a favor de H2. Anote el valor exacto de ambas medias en su bitácora.
+\end{tcolorbox}
+
+\subsection{Permisos más frecuentes}
+
+Identifique los 20 permisos más declarados en el dataset. Reflexione sobre cuáles de ellos podrían asociarse con comportamientos maliciosos.
+
+\subsection{Permisos diferenciales entre clases}
+
+Calcule y analice la diferencia de frecuencia de cada permiso entre clases. Liste los cinco permisos con mayor diferencia positiva (más asociados a malware) y reflexione sobre las capacidades del dispositivo que habilitan.
+
+\section{Análisis de permisos sensibles}
+
+Ejecute las celdas de análisis de permisos sensibles. Registre:
+
+\begin{itemize}
+    \item número promedio de permisos sensibles en APKs benignas;
+    \item número promedio de permisos sensibles en APKs maliciosas;
+    \item los tres permisos sensibles más frecuentes en malware.
+\end{itemize}
+
+\begin{tcolorbox}[title=Evidencia para H3]
+Si las APKs maliciosas tienen significativamente más permisos sensibles en promedio, esto respalda H3. Compare sus resultados con el valor esperado del notebook: aproximadamente 9 permisos sensibles en maliciosas frente a 4 en benignas.
+\end{tcolorbox}
+
+\section{Solapamiento entre clases}
+
+Ejecute las celdas que calculan permisos exclusivos de cada clase y permisos compartidos. Registre:
+
+\begin{itemize}
+    \item número de permisos exclusivos de APKs benignas;
+    \item número de permisos exclusivos de APKs maliciosas;
+    \item número de permisos compartidos entre ambas clases.
+\end{itemize}
+
+Reflexione sobre las implicaciones del solapamiento para la clasificación automática. ¿Por qué un permiso compartido no es evidencia directa de malware?
+
+\section{Agrupamiento no supervisado con K-Means}
+
+Ejecute las celdas de agrupamiento K-Means con dos clusters. Analice la tabla de contingencia (cluster vs. clase real):
+
+\begin{itemize}
+    \item ¿Un cluster concentra mayoritariamente APKs maliciosas?
+    \item ¿El otro concentra mayoritariamente APKs benignas?
+    \item ¿Qué tan puro es cada cluster?
+\end{itemize}
+
+Ejecute también las visualizaciones PCA y t-SNE. Observe si las dos clases forman regiones visualmente separables en las proyecciones bidimensionales.
+
+\begin{tcolorbox}[title=Punto de control 4]
+\textbf{Resultado esperado:} un índice Rand ajustado (ARI) alrededor de 0.45, indicando correspondencia moderada entre clusters y clases. Las proyecciones PCA y t-SNE deben mostrar cierta separación entre clases, aunque con solapamiento visible.
+\end{tcolorbox}
+
+\section{Contraste preliminar de hipótesis}
+
+Con base en los resultados obtenidos hasta este punto, complete el contraste parcial de hipótesis en su bitácora:
+
+\begin{description}
+    \item[H2.] ¿El p-value de la prueba Mann-Whitney permite rechazar la hipótesis nula? ¿Cuál fue el p-value obtenido?
+    \item[H3.] ¿Las APKs maliciosas tienen más permisos sensibles en promedio? ¿Cuáles son los tres más frecuentes?
+    \item[H4 (parcial).] ¿Cuántos permisos son compartidos entre clases? ¿Qué implica este solapamiento?
+\end{description}
+
+\begin{tcolorbox}[title=Nota sobre H1]
+H1 afirma que los modelos supervisados superan la línea base. Esta hipótesis no puede contrastarse todavía, ya que el entrenamiento de modelos se realizará en la siguiente sesión.
+\end{tcolorbox}
+
+\section{Entregables al cierre de esta sesión}
+
+Al terminar la sesión, el estudiante debe tener completadas y documentadas las siguientes evidencias en su bitácora técnica:
+
+\begin{enumerate}
+    \item Dimensiones del dataset original y tras la limpieza.
+    \item Gráficos del análisis exploratorio: distribución de clases, boxplot e histograma de permisos, top 20 permisos frecuentes, permisos diferenciales.
+    \item Tabla comparativa de permisos sensibles por clase.
+    \item Conteo de permisos exclusivos y compartidos entre clases.
+    \item Tabla de contingencia del agrupamiento K-Means.
+    \item Proyecciones PCA y t-SNE coloreadas por clase real.
+    \item Contraste parcial de H2, H3 y H4 con evidencias numéricas.
+    \item Registro de problemas técnicos encontrados y soluciones aplicadas.
+\end{enumerate}
+
+\begin{tcolorbox}[title=Avance hacia la sesión del 22/06]
+En la próxima sesión se completará la segunda mitad de la práctica: entrenamiento de modelos supervisados, evaluación comparativa, contraste de las hipótesis H1, H5 y H6, prueba de la aplicación web con una APK real y elaboración del reporte final. Es indispensable llegar a esa sesión con todas las evidencias de esta sesión documentadas en la bitácora.
+\end{tcolorbox}
+
+\end{document}
